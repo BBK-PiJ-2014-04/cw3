@@ -1,7 +1,8 @@
+package cw3;
 /**
  * An implementation of a stack, a data structure of type LIFO (Last
  * In, First Out).
- * 
+ * package cw3;
  * Classes implementing this interface must use a {@see List} as the
  * underlying data structure to store the elements on the stack. 
  * 

@@ -1,3 +1,5 @@
+package cw3;
+
 public enum ErrorMessage {
     /**
      * No error. 
