@@ -26,13 +26,17 @@ public class ReturnObjectImpl implements ReturnObject {
 
 	@Override
 	public ErrorMessage getError() {
-		// TODO Auto-generated method stub
-		return null;
+		if(hasError()) {
+			return (ErrorMessage) myObject;
+		}
+		else {
+			return ErrorMessage.NO_ERROR;
+		}
 	}
 
 	@Override
 	public Object getReturnValue() {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
