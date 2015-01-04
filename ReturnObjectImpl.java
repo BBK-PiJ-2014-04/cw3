@@ -36,8 +36,12 @@ public class ReturnObjectImpl implements ReturnObject {
 
 	@Override
 	public Object getReturnValue() {
-		
-		return null;
+		if(hasError()) {
+			return null;
+		}
+		else {
+			return myObject;
+		}
 	}
 	
 }
