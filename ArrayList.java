@@ -5,7 +5,7 @@ public class ArrayList implements List {
 	public Object[] myarray;
 	
 	public ArrayList() {
-		myarray = new Object[100];
+		myarray = new Object[100]; //I will initialise my array with a fixed size(that I will expand if needed)
 	}
 
 	@Override
@@ -20,7 +20,13 @@ public class ArrayList implements List {
 
 	@Override
 	public int size() {
-		for(int i=0; )
+		int arraysize = 0;
+		for(int i=0;i<myarray.length;i++) {
+			if(!myarray[i].equals(null)) {
+				arraysize++;
+			}
+		} // The nulls won't be visible from outside the class, and I will use them to define removed/added elements
+		return arraysize;
 	}
 
 	@Override
