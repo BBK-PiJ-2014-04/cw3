@@ -3,11 +3,7 @@ package cw3;
 public class ArrayList implements List {
 	
 	public Object[] myarray;
-	
-	public ArrayList(Object[] passedArray) {
-		this.myarray = passedArray;
-	}
-	
+
 	@Override
 	public boolean isEmpty() {
 		if(myarray.length > 0){
@@ -25,7 +21,7 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject get(int index) {
-		if(index < 0 || index >= myarray.length) {
+		if(index < 0 || index >= this.size()) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
@@ -35,7 +31,14 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject remove(int index) {
-		// TODO Auto-generated method stub
+		if(index < 0 || index >= this.size()) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		}
+		else {
+			for(int i = index; i < this.size(); i++) {
+				
+			}
+		}	
 		return null;
 	}
 
