@@ -4,6 +4,10 @@ public class ArrayList implements List {
 	
 	public Object[] myarray;
 	
+	public ArrayList(Object[] passedArray) {
+		this.myarray = passedArray;
+	}
+	
 	@Override
 	public boolean isEmpty() {
 		if(myarray.length > 0){
