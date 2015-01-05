@@ -25,8 +25,12 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if(index < 0 || index >= myarray.length) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		}
+		else {
+			return new ReturnObjectImpl(myarray[index]);
+		}
 	}
 
 	@Override
