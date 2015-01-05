@@ -3,10 +3,14 @@ package cw3;
 public class ArrayList implements List {
 	
 	public Object[] myarray;
+	
+	public ArrayList() {
+		myarray = new Object[100];
+	}
 
 	@Override
 	public boolean isEmpty() {
-		if(myarray.length > 0){
+		if(size() > 0){
 			return false;
 		}
 		else {
@@ -16,7 +20,7 @@ public class ArrayList implements List {
 
 	@Override
 	public int size() {
-		return myarray.length;
+		for(int i=0; )
 	}
 
 	@Override
