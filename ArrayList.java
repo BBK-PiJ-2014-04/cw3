@@ -46,7 +46,13 @@ public class ArrayList implements List {
 		}
 		else {
 			for(int i = index; i < this.size(); i++) {
-				
+				if(i == index) {
+					
+				}
+				if(!myarray[i+1].equals(null)) {
+					myarray[i] = myarray[i+1];
+				}
+					
 			}
 		}	
 		return null;
