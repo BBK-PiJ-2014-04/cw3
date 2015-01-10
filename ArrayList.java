@@ -71,10 +71,16 @@ public class ArrayList implements List {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
-			myarray[end] = item;
+			for(int i = this.size(); i >= index; i++) {
+				if(i == index) {
+					myarray[index] = item;
+				}
+				else {
+					myarray[i+1] = myarray[i];
+				}
+			}
 			return new ReturnObjectImpl(null);
 		}
-		return null;
 	}
 
 	@Override
