@@ -50,12 +50,10 @@ public class ArrayList implements List {
 				if(i == index) {
 					returnvalue = myarray[index];
 				}
-				else {
-					if(!myarray[i+1].equals(null)) {
-						myarray[i] = myarray[i+1];
-					}
+				myarray[i] = myarray[i+1];
+				if(myarray[i+1].equals(null)) {
+					break;//if the next value is null, it means we reached the logical end of the array so we can break the cycle.
 				}
-					
 			}
 		}	
 		return new ReturnObjectImpl(returnvalue);
