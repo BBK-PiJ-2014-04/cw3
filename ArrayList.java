@@ -67,8 +67,14 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject add(Object item) {
-		// TODO Auto-generated method stub
-		return null;
+		int end = size();
+		if(item == null) {
+			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		}
+		else {
+			myarray[end] = item;
+			return new ReturnObjectImpl(null);
+		}
 	}
 
 }
