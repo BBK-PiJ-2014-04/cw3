@@ -79,9 +79,7 @@ public class ArrayList implements List {
 					myarray[i+1] = myarray[i];
 				}
 			}
-			if(size() == myarray.length) {
-				
-			}
+			this.CheckArraySize();
 			return new ReturnObjectImpl(null);
 		}
 	}
@@ -94,16 +92,19 @@ public class ArrayList implements List {
 		}
 		else {
 			myarray[end] = item;
+			this.CheckArraySize();
 			return new ReturnObjectImpl(null);
 		}
 	}
 	
-	private void ExtendArray() {
-		Object[] newarray = new Object[myarray.length * 2];
-		for(int i = 0; i < myarray.length; i++) {
-			newarray[i] = myarray[i];
+	private void CheckArraySize() {
+		if(size() == myarray.length) {
+			Object[] newarray = new Object[myarray.length * 2]; //doubling the size of the array
+			for(int i = 0; i < myarray.length; i++) {
+				newarray[i] = myarray[i];
+			}
+			myarray = newarray;
 		}
-		myarray = newarray;
 	}
 
 }
