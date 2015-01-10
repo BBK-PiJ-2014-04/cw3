@@ -64,7 +64,16 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject add(int index, Object item) {
-		
+		if(item == null) {
+			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		}
+		else if(index < 0 || index >= this.size()) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		}
+		else {
+			myarray[end] = item;
+			return new ReturnObjectImpl(null);
+		}
 		return null;
 	}
 
