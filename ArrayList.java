@@ -42,7 +42,10 @@ public class ArrayList implements List {
 	@Override
 	public ReturnObject remove(int index) {
 		Object returnvalue = new Object();
-		if(index < 0 || index >= this.size()) {
+		if(size() == 0) {
+			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE); //if someone tries to remove something from an empty array
+		}
+		else if(index < 0 || index >= this.size()) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
@@ -61,7 +64,7 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject add(int index, Object item) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
