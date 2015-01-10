@@ -25,7 +25,7 @@ public class ArrayList implements List {
 			if(!myarray[i].equals(null)) {
 				arraysize++;
 			}
-		} // The nulls won't be visible from outside the class, and I will use them to define removed/added elements
+		} // The nulls won't be visible from outside the class, and I will use them to define the size and where to remove/add elements
 		return arraysize;
 	}
 
@@ -41,21 +41,24 @@ public class ArrayList implements List {
 
 	@Override
 	public ReturnObject remove(int index) {
+		Object returnvalue = new Object();
 		if(index < 0 || index >= this.size()) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
 			for(int i = index; i < this.size(); i++) {
 				if(i == index) {
-					
+					returnvalue = myarray[index];
 				}
-				if(!myarray[i+1].equals(null)) {
-					myarray[i] = myarray[i+1];
+				else {
+					if(!myarray[i+1].equals(null)) {
+						myarray[i] = myarray[i+1];
+					}
 				}
 					
 			}
 		}	
-		return null;
+		return new ReturnObjectImpl(returnvalue);
 	}
 
 	@Override
