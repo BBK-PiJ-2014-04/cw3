@@ -79,6 +79,9 @@ public class ArrayList implements List {
 					myarray[i+1] = myarray[i];
 				}
 			}
+			if(size() == myarray.length) {
+				
+			}
 			return new ReturnObjectImpl(null);
 		}
 	}
@@ -93,6 +96,14 @@ public class ArrayList implements List {
 			myarray[end] = item;
 			return new ReturnObjectImpl(null);
 		}
+	}
+	
+	private void ExtendArray() {
+		Object[] newarray = new Object[myarray.length * 2];
+		for(int i = 0; i < myarray.length; i++) {
+			newarray[i] = myarray[i];
+		}
+		myarray = newarray;
 	}
 
 }
