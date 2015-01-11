@@ -22,7 +22,7 @@ public class ArrayList implements List {
 	public int size() {
 		int arraysize = 0;
 		for(int i=0;i<myarray.length;i++) {
-			if(!myarray[i].equals(null)) {
+			if(!(myarray[i] == null)) {
 				arraysize++;
 			}
 		} // The nulls won't be visible from outside the class, and I will use them to define the size and where to remove/add elements

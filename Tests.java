@@ -12,6 +12,7 @@ public class Tests {
 		Integer integTest = null;
 		int prevSize = 0;
 		int successSize = 0;
+		System.out.print(mylist.size());
 		
 		//if(!test(mylist.size(),0)) System.out.print("The size method did not pass the test"); else prevSize = mylist.size();
 		/*if(!mylist.isEmpty()) System.out.print("The isEmpty method did not pass the test");
