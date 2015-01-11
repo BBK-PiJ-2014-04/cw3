@@ -12,16 +12,16 @@ public class Tests {
 		Integer integTest = null;
 		int prevSize = 0;
 		int successSize = 0;
-		System.out.print(mylist.size());
 		
-		//if(!test(mylist.size(),0)) System.out.print("The size method did not pass the test"); else prevSize = mylist.size();
-		/*if(!mylist.isEmpty()) System.out.print("The isEmpty method did not pass the test");
+		
+		if(!test(mylist.size(),0)) System.out.print("The size method did not pass the test"); else prevSize = mylist.size();
+		if(!mylist.isEmpty()) System.out.print("The isEmpty method did not pass the test");
 		test(mylist.add(-2, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		test(mylist.add(m).getError(),ErrorMessage.NO_ERROR);
-		test(mylist.add(2, stringTest).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		test(mylist.add(2, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		test(mylist.add(2, integTest).getError(),ErrorMessage.INVALID_ARGUMENT);
 		if(!test(mylist.size(),1)) System.out.print("The size method did not pass the test"); else successSize = mylist.size();
-		*/
+		
 	}
 	
 	

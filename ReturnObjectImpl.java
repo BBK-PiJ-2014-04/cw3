@@ -11,6 +11,9 @@ public class ReturnObjectImpl implements ReturnObject {
 
 	@Override
 	public boolean hasError() {
+		if(myObject == null) {
+			return false; // the object can be null (f.i. when we add something to a list). In this case, no error.
+		}
 		switch((ErrorMessage) myObject) {
 		case EMPTY_STRUCTURE:
 			return true;
