@@ -12,8 +12,16 @@ public class LinkedList implements List {
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		List tempList;
+		int size = 0;
+		if(!isEmpty()) {
+			do {
+				size++;
+				tempList = pointer;
+			} while(tempList != null);
+		}
+		return size;
+		
 	}
 
 	@Override
