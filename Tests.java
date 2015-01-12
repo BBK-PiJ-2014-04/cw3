@@ -6,22 +6,22 @@ public class Tests {
 		//Object[] myarray = new Object[100];
 		//System.out.print(myarray[2]); //testing if returns null with no errors
 		
+		
+		System.out.print("Welcome to the test area");
 		ArrayList mylist = new ArrayList();
 		int m = 5;
 		String stringTest = "test";
 		Integer integTest = null;
-		int prevSize = 0;
-		int successSize = 0;
 		
-		
-		if(!test(mylist.size(),0)) System.out.print("The size method did not pass the test"); else prevSize = mylist.size();
+		if(!test(mylist.size(),0)) System.out.print("The size method did not pass the test");
 		if(!mylist.isEmpty()) System.out.print("The isEmpty method did not pass the test");
 		test(mylist.add(-2, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		test(mylist.add(m).getError(),ErrorMessage.NO_ERROR);
 		test(mylist.add(2, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		test(mylist.add(2, integTest).getError(),ErrorMessage.INVALID_ARGUMENT);
-		if(!test(mylist.size(),1)) System.out.print("The size method did not pass the test"); else successSize = mylist.size();
-		
+		if(!test(mylist.size(),1)) System.out.print("The size method did not pass the test");
+		test(mylist.add(m+3).getError(),ErrorMessage.NO_ERROR); //this should test the resize (for when the length of the array will be set to 2)
+		test(mylist.add(stringTest).getError(),ErrorMessage.NO_ERROR); //this should test if we can put different types of object on the array
 	}
 	
 	
