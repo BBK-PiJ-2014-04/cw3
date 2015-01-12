@@ -6,7 +6,7 @@ public class LinkedList implements List {
 	
 	@Override
 	public boolean isEmpty() {
-		return (size() > 0) ? false : true;		
+		return (Listdata == null && pointer == null) ? true : false; // I'm doing a workaround of the head of the list problem, by nullifying his object value (just the head)		
 	}
 
 	@Override
@@ -15,12 +15,12 @@ public class LinkedList implements List {
 		LinkedList tempList;
 		if(!isEmpty()) {
 			tempList = this;
-			do {
-				if(tempList.Listdata != null) {
+			if(tempList.Listdata == null && tempList.pointer != null) {
+				do {
 					size++;
-				}
-				tempList = pointer;
-			} while(tempList != null);
+					tempList = pointer;
+				} while(tempList != null);
+			}
 		}
 		return size;
 		
@@ -32,39 +32,52 @@ public class LinkedList implements List {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
-			LinkedList tempList = this;
-			for(int i = 0; i <= index; i++) {
-				if(tempList.Listdata == null) {
-					i--;
-				}
-				if(i < index) {
+			Object returnvalue = null;
+			if(index == 0) {
+				return (this.Listdata == null) ? new ReturnObjectImpl(pointer.Listdata) : new ReturnObjectImpl(this.Listdata);
+				//I will not use the head as part of the list, virtually it will be excluded, by nullifying his Listdata
+			}
+			else {
+				LinkedList tempList = this;
+				int i = -1; //As the head ListData has been nullified, we set the counter to -1 so virtually the 0 will be the "actual" head, the first pointer
+				while(i <= index) {
+					if(i == index)
+					{
+						returnvalue = new ReturnObjectImpl(tempList.Listdata);
+					}
 					tempList = pointer;
 				}
 			}
-			return new ReturnObjectImpl(tempList.Listdata);
+			return new ReturnObjectImpl(returnvalue);
 		}
 	}
 
 	@Override
 	public ReturnObject remove(int index) {
-		Object returnvalue;
 		if(size() == 0) {
-			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE); //if someone tries to remove something from an empty array
+			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE); //if someone tries to remove something from an empty list
 		}
 		else if(index < 0 || index >= this.size()) {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
-			LinkedList tempList = this;
-			for(int i = 0; i <= index; i++) {
-				if(tempList.Listdata == null) {
-					i--;
-				}
-				if(i < index) {
+			Object returnvalue = null;
+			if(index == 0) {
+				return new ReturnObjectImpl(pointer.Listdata);
+				//if the requested index is zero, it is the value on the pointer of the head.
+			}
+			else {
+				LinkedList tempList = this;
+				int i = -1; //As the head ListData has been nullified, we set the counter to -1 so virtually the 0 will be the "actual" head, the first pointer
+				while(i <= index) {
+					if(i == index)
+					{
+						returnvalue = new ReturnObjectImpl(tempList.Listdata);
+					}
 					tempList = pointer;
 				}
 			}
-			return new ReturnObjectImpl(tempList.Listdata);
+			return new ReturnObjectImpl(returnvalue);
 		}
 	}
 
