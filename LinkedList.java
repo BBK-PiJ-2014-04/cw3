@@ -4,7 +4,6 @@ public class LinkedList implements List {
 	private Object Listdata;
 	private LinkedList pointer;
 	
-	
 	@Override
 	public boolean isEmpty() {
 		return (pointer == null) ? false : true;		
@@ -12,8 +11,8 @@ public class LinkedList implements List {
 
 	@Override
 	public int size() {
-		List tempList;
 		int size = 0;
+		LinkedList tempList;
 		if(!isEmpty()) {
 			do {
 				size++;
@@ -26,8 +25,16 @@ public class LinkedList implements List {
 
 	@Override
 	public ReturnObject get(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		if(index < 0 || index >= this.size()) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		}
+		else {
+			LinkedList tempList = pointer;
+			for(int i = 1; i == index; i++) {
+				tempList = pointer;
+			}
+			return new ReturnObjectImpl(tempList.Listdata);
+		}
 	}
 
 	@Override
