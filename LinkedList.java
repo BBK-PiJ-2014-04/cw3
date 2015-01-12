@@ -47,8 +47,25 @@ public class LinkedList implements List {
 
 	@Override
 	public ReturnObject remove(int index) {
-		// TODO Auto-generated method stub
-		return null;
+		Object returnvalue;
+		if(size() == 0) {
+			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE); //if someone tries to remove something from an empty array
+		}
+		else if(index < 0 || index >= this.size()) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		}
+		else {
+			LinkedList tempList = this;
+			for(int i = 0; i <= index; i++) {
+				if(tempList.Listdata == null) {
+					i--;
+				}
+				if(i < index) {
+					tempList = pointer;
+				}
+			}
+			return new ReturnObjectImpl(tempList.Listdata);
+		}
 	}
 
 	@Override
