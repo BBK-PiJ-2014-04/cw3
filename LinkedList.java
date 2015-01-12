@@ -6,7 +6,7 @@ public class LinkedList implements List {
 	
 	@Override
 	public boolean isEmpty() {
-		return (pointer == null) ? true : false;		
+		return (size() > 0) ? false : true;		
 	}
 
 	@Override
@@ -14,8 +14,11 @@ public class LinkedList implements List {
 		int size = 0;
 		LinkedList tempList;
 		if(!isEmpty()) {
+			tempList = this;
 			do {
-				size++;
+				if(tempList.Listdata != null) {
+					size++;
+				}
 				tempList = pointer;
 			} while(tempList != null);
 		}
