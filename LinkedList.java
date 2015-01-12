@@ -6,7 +6,7 @@ public class LinkedList implements List {
 	
 	@Override
 	public boolean isEmpty() {
-		return (pointer == null) ? false : true;		
+		return (pointer == null) ? true : false;		
 	}
 
 	@Override
