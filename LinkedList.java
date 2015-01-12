@@ -32,9 +32,14 @@ public class LinkedList implements List {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
-			LinkedList tempList = pointer;
-			for(int i = 1; i == index; i++) {
-				tempList = pointer;
+			LinkedList tempList = this;
+			for(int i = 0; i <= index; i++) {
+				if(tempList.Listdata == null) {
+					i--;
+				}
+				if(i < index) {
+					tempList = pointer;
+				}
 			}
 			return new ReturnObjectImpl(tempList.Listdata);
 		}
