@@ -49,7 +49,7 @@ public class ArrayList implements List {
 					returnvalue = myarray[index];
 				}
 				myarray[i] = myarray[i+1];
-				if(myarray[i+1].equals(null)) {
+				if(myarray[i+1] == null) {
 					break;//if the next value is null, it means we reached the logical end of the array so we can break the cycle.
 				}
 			}
