@@ -1,12 +1,18 @@
 package cw3;
 
 public class LinkedList implements List {
-	private Object Listdata;
+	private Object ListData;
 	private LinkedList pointer;
+	private int size;
+	
+	public LinkedList(Object ListData) {
+		this.ListData = ListData;
+		this.size = 0;
+	}
 	
 	@Override
 	public boolean isEmpty() {
-		return (Listdata == null && pointer == null) ? true : false; // I'm doing a workaround of the head of the list problem, by nullifying his object value (just the head)		
+		return (ListData == null && pointer == null) ? true : false; // I'm doing a workaround of the head of the list problem, by nullifying his object value (just the head)		
 	}
 
 	@Override
@@ -15,7 +21,7 @@ public class LinkedList implements List {
 		LinkedList tempList;
 		if(!isEmpty()) {
 			tempList = this;
-			if(tempList.Listdata == null && tempList.pointer != null) {
+			if(tempList.ListData == null && tempList.pointer != null) {
 				do {
 					size++;
 					tempList = pointer;
@@ -83,7 +89,15 @@ public class LinkedList implements List {
 
 	@Override
 	public ReturnObject add(int index, Object item) {
-		// TODO Auto-generated method stub
+		if(item == null) {
+			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		}
+		else if(index < 0 || index >= this.size()) {
+			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
+		}
+		else {
+			
+		}
 		return null;
 	}
 

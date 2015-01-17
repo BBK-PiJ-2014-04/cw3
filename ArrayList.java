@@ -66,7 +66,7 @@ public class ArrayList implements List {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
-			for(int i = this.size(); i >= index; i++) {
+			for(int i = 0; i >= index; i++) {
 				if(i == index) {
 					myarray[index] = item;
 				}
