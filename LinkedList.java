@@ -32,7 +32,7 @@ public class LinkedList implements List {
 			for(int i = 0; i < this.size(); i++) {
 				if(i == index)
 				{
-					returnvalue = new ReturnObjectImpl(tempList.ListData);
+					returnvalue = tempList.ListData;
 				}
 				else {
 					tempList = tempList.pointer;
@@ -56,7 +56,7 @@ public class LinkedList implements List {
 			for(int i = 0; i < this.size(); i++) {
 				if(i == index)
 				{
-					returnvalue = new ReturnObjectImpl(tempList.ListData);
+					returnvalue = tempList.ListData;
 				}
 				tempList = tempList.pointer;
 			}	
