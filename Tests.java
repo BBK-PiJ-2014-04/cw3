@@ -8,8 +8,8 @@ public class Tests {
 		
 		
 		System.out.println("Welcome to the test area");
-		List mylist = new ArrayList();
-		//List mylinkedlist = new LinkedList();
+		//List mylist = new ArrayList();
+		List mylist = new LinkedList(null);
 		int m = 5;
 		String stringTest = "test";
 		Integer integTest = null;

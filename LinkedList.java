@@ -83,15 +83,27 @@ public class LinkedList implements List {
 					tempList.pointer = newObject; 
 				}
 				tempList = tempList.pointer;
-			}			
+			}
+			this.size++;
 		}
-		return null;
+		return new ReturnObjectImpl(null);
 	}
 
 	@Override
 	public ReturnObject add(Object item) {
-		// TODO Auto-generated method stub
-		return null;
+		if(item == null) {
+			return new ReturnObjectImpl(ErrorMessage.INVALID_ARGUMENT);
+		}
+		else {
+			LinkedList tempList = this;
+			while(tempList.pointer != null) {
+				tempList = tempList.pointer;
+			}
+			LinkedList newObject = new LinkedList(item);
+			tempList.pointer = newObject;
+			this.size++;
+		}
+		return new ReturnObjectImpl(null);
 	}
 	
 }
