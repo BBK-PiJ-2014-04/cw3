@@ -52,11 +52,13 @@ public class LinkedList implements List {
 		}
 		else {
 			Object returnvalue = null;
-			LinkedList tempList = this.pointer;			
+			LinkedList tempList = this;		
 			for(int i = 0; i < this.size(); i++) {
 				if(i == index)
 				{
-					returnvalue = tempList.ListData;
+					returnvalue = tempList.pointer.ListData;
+					tempList.pointer = tempList.pointer.pointer;
+					break;
 				}
 				tempList = tempList.pointer;
 			}	
@@ -81,6 +83,7 @@ public class LinkedList implements List {
 					LinkedList newObject = new LinkedList(item);
 					newObject.pointer = tempList.pointer;
 					tempList.pointer = newObject; 
+					break;
 				}
 				tempList = tempList.pointer;
 			}
