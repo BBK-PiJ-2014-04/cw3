@@ -9,12 +9,12 @@ public class Tests {
 		
 		System.out.println("Welcome to the test area");
 		List mylist = new ArrayList();
-		List mylinkedlist = new LinkedList();
+		//List mylinkedlist = new LinkedList();
 		int m = 5;
 		String stringTest = "test";
 		Integer integTest = null;
 		
-		/*if(!test(mylist.size(),0)) System.out.println("The size method did not pass the test");
+		if(!test(mylist.size(),0)) System.out.println("The size method did not pass the test");
 		if(!mylist.isEmpty()) System.out.println("The isEmpty method did not pass the test");
 		test(mylist.add(-2, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		test(mylist.add(m).getError(),ErrorMessage.NO_ERROR);
@@ -23,9 +23,14 @@ public class Tests {
 		if(!test(mylist.size(),1)) System.out.println("The size method did not pass the test");
 		test(mylist.add(m+3).getError(),ErrorMessage.NO_ERROR); //this should test the resize (for when the length of the array will be set to 2)
 		test(mylist.add(stringTest).getError(),ErrorMessage.NO_ERROR); //this should test if we can put different types of object on the array
-	*/
-		System.out.println(mylinkedlist.isEmpty());
-		System.out.println(mylinkedlist.size());
+		test(mylist.add(0,stringTest).getError(),ErrorMessage.NO_ERROR);
+		 
+		for(int i = 0; i < mylist.size(); i++) {
+			System.out.println(mylist.get(i).getReturnValue());
+		}
+		
+		//System.out.println(mylinkedlist.isEmpty());
+		//System.out.println(mylinkedlist.size());
 		
 		
 	}

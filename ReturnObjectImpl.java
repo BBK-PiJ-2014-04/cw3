@@ -14,18 +14,12 @@ public class ReturnObjectImpl implements ReturnObject {
 		if(myObject == null) {
 			return false; // the object can be null (f.i. when we add something to a list). In this case, no error.
 		}
-		switch((ErrorMessage) myObject) {
-		case EMPTY_STRUCTURE:
-			return true;
-		case INDEX_OUT_OF_BOUNDS:
-			return true;
-		case INVALID_ARGUMENT:
-			return true;
-		default:
-			return false;
+		return
+		(myObject == ErrorMessage.EMPTY_STRUCTURE 
+				|| myObject == ErrorMessage.INDEX_OUT_OF_BOUNDS 
+				|| myObject == ErrorMessage.INVALID_ARGUMENT) ? true : false;
 		}
 		
-	}
 
 	@Override
 	public ErrorMessage getError() {

@@ -66,12 +66,10 @@ public class ArrayList implements List {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
-			for(int i = 0; i >= index; i++) {
+			for(int i = this.size()-1; i >= index; i--) {
+				myarray[i+1] = myarray[i];
 				if(i == index) {
 					myarray[index] = item;
-				}
-				else {
-					myarray[i+1] = myarray[i];
 				}
 			}
 			this.CheckArraySize();
@@ -93,7 +91,7 @@ public class ArrayList implements List {
 	}
 	
 	private void CheckArraySize() {
-		if(size() == myarray.length) {
+		if(size() == myarray.length-1) {
 			Object[] newarray = new Object[myarray.length * 2]; //doubling the size of the array
 			for(int i = 0; i < myarray.length; i++) {
 				newarray[i] = myarray[i];

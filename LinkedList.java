@@ -11,6 +11,7 @@ public class LinkedList implements List {
 	}
 	
 	@Override
+	
 	public boolean isEmpty() {
 		return (this.size == 0) ? true : false; 		
 	}
@@ -72,7 +73,13 @@ public class LinkedList implements List {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
-			
+			for(int i = 0; i < this.size(); i++) {
+				if(i == index)
+				{
+					returnvalue = new ReturnObjectImpl(tempList.ListData);
+				}
+				tempList = tempList.pointer;
+			}			
 		}
 		return null;
 	}
