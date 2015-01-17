@@ -12,24 +12,12 @@ public class LinkedList implements List {
 	
 	@Override
 	public boolean isEmpty() {
-		return (ListData == null && pointer == null) ? true : false; // I'm doing a workaround of the head of the list problem, by nullifying his object value (just the head)		
+		return (this.size == 0) ? true : false; 		
 	}
 
 	@Override
 	public int size() {
-		int size = 0;
-		LinkedList tempList;
-		if(!isEmpty()) {
-			tempList = this;
-			if(tempList.ListData == null && tempList.pointer != null) {
-				do {
-					size++;
-					tempList = pointer;
-				} while(tempList != null);
-			}
-		}
-		return size;
-		
+		return this.size;
 	}
 
 	@Override
@@ -39,19 +27,14 @@ public class LinkedList implements List {
 		}
 		else {
 			Object returnvalue = null;
-			if(index == 0) {
-				return (this.Listdata == null) ? new ReturnObjectImpl(pointer.Listdata) : new ReturnObjectImpl(this.Listdata);
-				//I will not use the head as part of the list, virtually it will be excluded, by nullifying his Listdata
-			}
-			else {
-				LinkedList tempList = this;
-				int i = -1; //As the head ListData has been nullified, we set the counter to -1 so virtually the 0 will be the "actual" head, the first pointer
-				while(i <= index) {
-					if(i == index)
-					{
-						returnvalue = new ReturnObjectImpl(tempList.Listdata);
-					}
-					tempList = pointer;
+			LinkedList tempList = this.pointer;
+			for(int i = 0; i < this.size(); i++) {
+				if(i == index)
+				{
+					returnvalue = new ReturnObjectImpl(tempList.ListData);
+				}
+				else {
+					tempList = tempList.pointer;
 				}
 			}
 			return new ReturnObjectImpl(returnvalue);
@@ -68,21 +51,14 @@ public class LinkedList implements List {
 		}
 		else {
 			Object returnvalue = null;
-			if(index == 0) {
-				return new ReturnObjectImpl(pointer.Listdata);
-				//if the requested index is zero, it is the value on the pointer of the head.
-			}
-			else {
-				LinkedList tempList = this;
-				int i = -1; //As the head ListData has been nullified, we set the counter to -1 so virtually the 0 will be the "actual" head, the first pointer
-				while(i <= index) {
-					if(i == index)
-					{
-						returnvalue = new ReturnObjectImpl(tempList.Listdata);
-					}
-					tempList = pointer;
+			LinkedList tempList = this.pointer;			
+			for(int i = 0; i < this.size(); i++) {
+				if(i == index)
+				{
+					returnvalue = new ReturnObjectImpl(tempList.ListData);
 				}
-			}
+				tempList = tempList.pointer;
+			}			
 			return new ReturnObjectImpl(returnvalue);
 		}
 	}
