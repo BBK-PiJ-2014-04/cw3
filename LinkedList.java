@@ -59,7 +59,8 @@ public class LinkedList implements List {
 					returnvalue = new ReturnObjectImpl(tempList.ListData);
 				}
 				tempList = tempList.pointer;
-			}			
+			}	
+			this.size--;
 			return new ReturnObjectImpl(returnvalue);
 		}
 	}
@@ -73,10 +74,13 @@ public class LinkedList implements List {
 			return new ReturnObjectImpl(ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		}
 		else {
+			LinkedList tempList = this;
 			for(int i = 0; i < this.size(); i++) {
 				if(i == index)
 				{
-					returnvalue = new ReturnObjectImpl(tempList.ListData);
+					LinkedList newObject = new LinkedList(item);
+					newObject.pointer = tempList.pointer;
+					tempList.pointer = newObject; 
 				}
 				tempList = tempList.pointer;
 			}			
