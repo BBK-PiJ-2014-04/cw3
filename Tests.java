@@ -31,6 +31,7 @@ public class Tests {
 		test(mylist.remove(3).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		test(mylist.remove(1).getError(),ErrorMessage.NO_ERROR);*/
 		if(!test(mylist.head().getReturnValue().toString(),"test")) System.out.println("The head method did not pass the test");
+		System.out.printf("The head is %s",mylist.head().getReturnValue().toString(),"test");
 		FunctionalList FunctionalNewList = mylist.rest();
 		
 		System.out.println("");

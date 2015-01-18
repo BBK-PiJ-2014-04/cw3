@@ -8,7 +8,7 @@ public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE);
 		}
 		else {
-			return new ReturnObjectImpl(this.get(0)); // I could have used "pointer.ListData" but in order to do it I should have changed pointer from private to protected. I rather use the get method.
+			return this.get(0); // I could have used "pointer.ListData" but in order to do it I should have changed pointer from private to protected. I rather use the get method.
 		}
 	}
 
