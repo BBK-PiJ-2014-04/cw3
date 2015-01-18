@@ -10,7 +10,7 @@ public class ArrayList implements List {
 
 	@Override
 	public boolean isEmpty() {
-		return (size() > 0) ? false : true; 
+		return (size() == 0) ? true : false; 
 	}
 
 	@Override
