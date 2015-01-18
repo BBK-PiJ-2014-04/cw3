@@ -10,7 +10,8 @@ public class Tests {
 		System.out.println("Welcome to the test area");
 		//List mylist = new ArrayList();
 		//List mylist = new LinkedList();
-		FunctionalList mylist = new FunctionalArrayList();
+		//FunctionalList mylist = new FunctionalArrayList();
+		FunctionalList mylist = new FunctionalLinkedList();
 		int m = 5;
 		String stringTest = "test";
 		Integer integTest = null;
@@ -44,6 +45,7 @@ public class Tests {
 		for(int i = 0; i < FunctionalNewList.size(); i++) {
 			System.out.println(FunctionalNewList.get(i).getReturnValue());
 		}
+		System.out.println(String.format("Rest List size:{0}", FunctionalNewList.size()));
 		
 		System.out.println("");
 		FunctionalNewList.remove(1);
@@ -52,11 +54,15 @@ public class Tests {
 			System.out.println(FunctionalNewList.get(i).getReturnValue());
 		}
 		
+		System.out.println(String.format("Modified Rest List size:{0}", FunctionalNewList.size()));
+		
 		System.out.println("");
 		System.out.println("Checking Original List Again");
 		for(int i = 0; i < mylist.size(); i++) {
 			System.out.println(mylist.get(i).getReturnValue());
 		}
+		
+		System.out.println(String.format("Original List size:{0}", FunctionalNewList.size()));
 		
 		//System.out.println(mylinkedlist.isEmpty());
 		//System.out.println(mylinkedlist.size());
