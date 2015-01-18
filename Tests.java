@@ -34,6 +34,8 @@ public class Tests {
 		System.out.printf("The head is %s",mylist.head().getReturnValue().toString(),"test");
 		FunctionalList FunctionalNewList = mylist.rest();
 		
+		//Add here the tests for SampleableList.
+		
 		System.out.println("");
 		
 		System.out.println("Original List");
