@@ -45,7 +45,7 @@ public class Tests {
 		for(int i = 0; i < FunctionalNewList.size(); i++) {
 			System.out.println(FunctionalNewList.get(i).getReturnValue());
 		}
-		System.out.println(String.format("Rest List size:{0}", FunctionalNewList.size()));
+		System.out.printf("Rest List size: %d", FunctionalNewList.size());
 		
 		System.out.println("");
 		FunctionalNewList.remove(1);
@@ -54,7 +54,7 @@ public class Tests {
 			System.out.println(FunctionalNewList.get(i).getReturnValue());
 		}
 		
-		System.out.println(String.format("Modified Rest List size:{0}", FunctionalNewList.size()));
+		System.out.printf("Modified Rest List size: %d", FunctionalNewList.size());
 		
 		System.out.println("");
 		System.out.println("Checking Original List Again");
@@ -62,7 +62,7 @@ public class Tests {
 			System.out.println(mylist.get(i).getReturnValue());
 		}
 		
-		System.out.println(String.format("Original List size:{0}", FunctionalNewList.size()));
+		System.out.printf("Original List size: %d", mylist.size());
 		
 		//System.out.println(mylinkedlist.isEmpty());
 		//System.out.println(mylinkedlist.size());
