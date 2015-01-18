@@ -9,7 +9,8 @@ public class Tests {
 		
 		System.out.println("Welcome to the test area");
 		//List mylist = new ArrayList();
-		List mylist = new LinkedList(null);
+		//List mylist = new LinkedList(null);
+		List mylist = new FunctionalArrayList();
 		int m = 5;
 		String stringTest = "test";
 		Integer integTest = null;
@@ -24,9 +25,9 @@ public class Tests {
 		test(mylist.add(m+3).getError(),ErrorMessage.NO_ERROR); //this should test the resize (for when the length of the array will be set to 2)
 		test(mylist.add(stringTest).getError(),ErrorMessage.NO_ERROR); //this should test if we can put different types of object on the array
 		test(mylist.add(0,stringTest).getError(),ErrorMessage.NO_ERROR);
-		test(mylist.remove(0).getError(),ErrorMessage.NO_ERROR);
+		/*test(mylist.remove(0).getError(),ErrorMessage.NO_ERROR);
 		test(mylist.remove(3).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
-		test(mylist.remove(1).getError(),ErrorMessage.NO_ERROR);
+		test(mylist.remove(1).getError(),ErrorMessage.NO_ERROR);*/
 		 
 		for(int i = 0; i < mylist.size(); i++) {
 			System.out.println(mylist.get(i).getReturnValue());
