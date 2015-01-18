@@ -8,7 +8,9 @@ public class SampleableListImpl extends LinkedList implements SampleableList {
 	public SampleableList sample() {
 		SampleableList mySampledList = new SampleableListImpl();
 		for(int i = 0; i < this.size(); i++) {
-			
+			if(i % 2 == 1) {
+				mySampledList.add(this.get(i));
+			}
 		}
 		return mySampledList;
 	}
