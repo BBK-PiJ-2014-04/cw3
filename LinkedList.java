@@ -5,8 +5,7 @@ public class LinkedList implements List {
 	private LinkedList pointer;
 	private int size;
 	
-	public LinkedList(Object ListData) {
-		this.ListData = ListData;
+	public LinkedList() {
 		this.size = 0;
 	}
 	
@@ -80,7 +79,8 @@ public class LinkedList implements List {
 			for(int i = 0; i < this.size(); i++) {
 				if(i == index)
 				{
-					LinkedList newObject = new LinkedList(item);
+					LinkedList newObject = new LinkedList();
+					newObject.ListData = item;
 					newObject.pointer = tempList.pointer;
 					tempList.pointer = newObject; 
 					break;
@@ -102,7 +102,8 @@ public class LinkedList implements List {
 			while(tempList.pointer != null) {
 				tempList = tempList.pointer;
 			}
-			LinkedList newObject = new LinkedList(item);
+			LinkedList newObject = new LinkedList();
+			newObject.ListData = item;
 			tempList.pointer = newObject;
 			this.size++;
 		}

@@ -9,7 +9,7 @@ public class Tests {
 		
 		System.out.println("Welcome to the test area");
 		//List mylist = new ArrayList();
-		//List mylist = new LinkedList(null);
+		//List mylist = new LinkedList();
 		FunctionalList mylist = new FunctionalArrayList();
 		int m = 5;
 		String stringTest = "test";
