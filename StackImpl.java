@@ -36,8 +36,16 @@ public class StackImpl extends AbstractStack {
 
 	@Override
 	public ReturnObject top() {
-		// TODO Auto-generated method stub
-		return null;
+		if(this.isEmpty()) {
+			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE); 
+			//no top() on an empty list. 
+			//This will also work when the list is null, as the size method returns 0 when the list is null
+			//I've chosen this approach when the list is null as EMPTY_STRUCTURE looks the most appropriate message among the ones present on the ErrorMessage enum
+		}
+		else {
+			return new ReturnObjectImpl(this.internalList.get(size()-1));
+		}
+		
 	}
 
 	@Override
