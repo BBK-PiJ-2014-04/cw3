@@ -57,8 +57,15 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	@Override
 	public void remove(Object object) {
-		// TODO Auto-generated method stub
-		
+		ReturnObject currentElement = null;
+		for(int i = 0; i < this.size(); i++) {
+			currentElement = this.mystack.get(i);
+			if(!currentElement.hasError() //We shouldn't have any error, but better to be safe than sorry
+					&& (object.equals(currentElement.getReturnValue())) 
+					) {
+				this.mystack.remove(i);
+			}
+		}
 	}
 
 }
