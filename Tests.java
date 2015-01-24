@@ -1,6 +1,15 @@
 package cw3;
 
+/**
+ * The Class Tests.
+ */
 public class Tests {
+	
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String [] args)
 	{
 		//Object[] myarray = new Object[100];
@@ -16,14 +25,14 @@ public class Tests {
 		String stringTest = "test";
 		Integer integTest = null;
 
-		if(!test(mylist.size(),0)) System.out.println("The size method did not pass the test");
+		if(mylist.size()==0) System.out.println("The size method did not pass the test");
 		if(!mylist.isEmpty()) System.out.println("The isEmpty method did not pass the test");
 		if(!test(mylist.add(0, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS)) System.out.println("The method add(index,item) did not pass the test(it shouldn't be used to insert the first element of the list)");
 		test(mylist.add(-2, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		test(mylist.add(m).getError(),ErrorMessage.NO_ERROR);
 		test(mylist.add(2, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS);
 		test(mylist.add(2, integTest).getError(),ErrorMessage.INVALID_ARGUMENT);
-		if(!test(mylist.size(),1)) System.out.println("The size method did not pass the test");
+		if(mylist.size() == 1) System.out.println("The size method did not pass the test");
 		test(mylist.add(m+3).getError(),ErrorMessage.NO_ERROR); //this should test the resize (for when the length of the array will be set to 2)
 		test(mylist.add(stringTest).getError(),ErrorMessage.NO_ERROR); //this should test if we can put different types of object on the array
 		test(mylist.add(0,stringTest).getError(),ErrorMessage.NO_ERROR);
@@ -76,6 +85,13 @@ public class Tests {
 	}
 	
 	
+	/**
+	 * Tests if two strings are the same
+	 *
+	 * @param item1 the Original String
+	 * @param item2 the Compared STring
+	 * @return true, if successful, otherwise false
+	 */
 	private static boolean test(String item1, String item2)
 	{
 		if(item1.equals(item2)) {
@@ -84,20 +100,18 @@ public class Tests {
 		return false;
 	}
 	
-	private static boolean test(int item1, int item2)
-	{
-		if(item1 == item2) {
-			return true;
-		}
-		return false;
-	}
-	
+	/**
+	 * Tests if the Error Generated is the error that we were expecting
+	 *
+	 * @param errorGenerated the error generated
+	 * @param errorExpected the error expected
+	 * @return true, if successful
+	 */
 	private static boolean test(ErrorMessage errorGenerated, ErrorMessage errorExpected) {
 		if(errorGenerated.equals(errorExpected)) {
 			return true;
 		}
 		return false;
 	}
-	//ArrayList tests
 	
 }
