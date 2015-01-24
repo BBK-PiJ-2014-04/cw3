@@ -4,20 +4,18 @@ public class ImprovedStackImpl implements ImprovedStack {
 	
 	private List mystack;
 	
-	public ImprovedStackImpl(List list) {
-		this.mystack = list;
+	public ImprovedStackImpl() {
+		this.mystack = new LinkedList();
 	}
 	
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+		return this.mystack.isEmpty();
 	}
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.mystack.size();
 	}
 
 	@Override
