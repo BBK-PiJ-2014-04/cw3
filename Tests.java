@@ -35,6 +35,7 @@ public class Tests {
 		FunctionalList FunctionalNewList = mylist.rest();
 		
 		//Add here the tests for SampleableList.
+		//Add here the tests for StackImpl
 		
 		System.out.println("");
 		
