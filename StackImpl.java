@@ -18,14 +18,20 @@ public class StackImpl extends AbstractStack {
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
-		return 0;
+		if(this.internalList != null) {
+			return this.internalList.size();
+		}
+		else {
+			return 0;
+		}
 	}
 
 	@Override
 	public void push(Object item) {
-		// TODO Auto-generated method stub
-		
+		if(item != null) {
+			this.internalList.add(item);
+		}
+		//No return type, so if the user passes a null as item, the program won't do anything
 	}
 
 	@Override
