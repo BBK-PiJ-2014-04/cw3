@@ -47,7 +47,8 @@ public class ImprovedStackImpl implements ImprovedStack {
 
 	@Override
 	public ImprovedStack reverse() {
-		// TODO Auto-generated method stub
+		ImprovedStack ReversedStack = new ImprovedStackImpl();
+		//the idea is to push elements in the new stack starting from the top of the old stack.
 		return null;
 	}
 
