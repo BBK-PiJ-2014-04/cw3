@@ -31,7 +31,7 @@ public class StackImpl extends AbstractStack {
 		if(item != null) {
 			this.internalList.add(item);
 		}
-		//No return type, so if the user passes a null as item, the program won't do anything
+		//No return type, so if a null is passed as item, the program won't do anything
 	}
 
 	@Override
