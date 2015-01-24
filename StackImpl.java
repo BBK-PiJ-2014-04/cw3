@@ -45,13 +45,15 @@ public class StackImpl extends AbstractStack {
 		else {
 			return new ReturnObjectImpl(this.internalList.get(size()-1));
 		}
-		
 	}
 
 	@Override
 	public ReturnObject pop() {
-		// TODO Auto-generated method stub
-		return null;
+		ReturnObject Popped = top();
+		if(Popped.getError() == ErrorMessage.NO_ERROR) {
+			this.internalList.remove(size()-1);
+		}
+		return Popped;
 	}
 	
 	
