@@ -49,7 +49,10 @@ public class ImprovedStackImpl implements ImprovedStack {
 	public ImprovedStack reverse() {
 		ImprovedStack ReversedStack = new ImprovedStackImpl();
 		//the idea is to push elements in the new stack starting from the top of the old stack.
-		return null;
+		for(int i = 0; i < this.size(); i++) {
+			ReversedStack.push(this.mystack.get(i));
+		}
+		return ReversedStack;
 	}
 
 	@Override
