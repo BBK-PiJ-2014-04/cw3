@@ -43,7 +43,7 @@ public class LinkedList implements List {
 
 	@Override
 	public ReturnObject remove(int index) {
-		if(size() == 0) {
+		if(isEmpty()) {
 			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE); //if someone tries to remove something from an empty list
 		}
 		else if(index < 0 || index >= this.size()) {

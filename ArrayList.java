@@ -37,7 +37,7 @@ public class ArrayList implements List {
 	@Override
 	public ReturnObject remove(int index) {
 		Object returnvalue = new Object();
-		if(size() == 0) {
+		if(isEmpty()) {
 			return new ReturnObjectImpl(ErrorMessage.EMPTY_STRUCTURE); //if someone tries to remove something from an empty array
 		}
 		else if(index < 0 || index >= this.size()) {
