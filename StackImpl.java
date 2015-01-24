@@ -49,7 +49,7 @@ public class StackImpl extends AbstractStack {
 
 	@Override
 	public ReturnObject pop() {
-		ReturnObject Popped = top();
+		ReturnObject Popped = top(); //I rather use the top method and do not replicate code.
 		if(Popped.getError() == ErrorMessage.NO_ERROR) {
 			this.internalList.remove(size()-1);
 		}
