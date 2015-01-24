@@ -2,7 +2,7 @@ package cw3;
 
 public class ArrayList implements List {
 	
-	private Object[] myarray;
+	protected Object[] myarray;
 	
 	public ArrayList() {
 		myarray = new Object[2]; //I will initialise my array with a fixed size(that I will expand if needed)
