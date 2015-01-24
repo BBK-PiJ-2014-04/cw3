@@ -36,6 +36,7 @@ public class Tests {
 		
 		//Add here the tests for SampleableList.
 		//Add here the tests for StackImpl
+		//Add here the tests for ImprovedStackImpl
 		
 		System.out.println("");
 		
