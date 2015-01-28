@@ -64,8 +64,26 @@ public class Tests {
 		mylist.add("Hello");
 		mylist.add("My name is Salvo");
 		mylist.add("Nice to meet you");
-		System.out.println(mylist.getList());
+		//System.out.println(mylist.getList()); deprecated
 		
+	}
+	
+	private static boolean UnitTestSampleableMethods(SampleableList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
+		String ErrorString = "";
+		myList.add(firstElement);
+		myList.add(0,secondElement);
+		myList.add(thirdElement);
+		myList.add(1,fourthElement);
+		myList.add(2,fifthElement);
+		SampleableList sampledList = myList.sample();
+		//In this case, I want to try and test the get method of the sampledList against the original added elements
+		if(!test(sampledList.get(0).getReturnValue(),secondElement))
+			ErrorString += "Test SampledMethods 1 Failed";
+		if(!test(sampledList.get(1).getReturnValue(),fifthElement))
+			ErrorString += "Test SampledMethods 2 Failed";
+		if(!test(sampledList.get(1).getReturnValue(),thirdElement))
+			ErrorString += "Test SampledMethods 3 Failed";
+		return (ErrorString != "") ? false : true;
 	}
 	
 	private static boolean UnitTestFunctionalMethods(FunctionalList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
@@ -75,29 +93,29 @@ public class Tests {
 		myList.add(thirdElement);
 		myList.add(1,fourthElement);
 		if(test(myList.get(1).getReturnValue(),firstElement))
-			ErrorString += "Test MainMethods 1 Failed";
+			ErrorString += "Test FunctionalMethods 1 Failed";
 		if(!test(myList.head(),secondElement))
 			ErrorString += "Test FunctionalMethods 2 Failed";
 		FunctionalList restList = myList.rest();
 		for(int i = 0; i < restList.size(); i++) {
 			if(!test(restList.get(i).getReturnValue(),myList.get(i+1).getReturnValue()))
-				ErrorString += "Test FunctionalMethods 3 Failed";
+				ErrorString += "Test FunctionalMethods " + i+3 + " Failed";
 		}
 		return (ErrorString != "") ? false : true;
 	}
 	
-	private static boolean UnitTestMainMethods(List mylist,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
+	private static boolean UnitTestMainMethods(List myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
 		String ErrorString = "";
-		mylist.add(firstElement);
-		mylist.add(secondElement);
-		mylist.add(thirdElement);
-		mylist.remove(1);
-		mylist.add(1,fourthElement);
-		if(!test(mylist.get(0).getReturnValue(),firstElement))
+		myList.add(firstElement);
+		myList.add(secondElement);
+		myList.add(thirdElement);
+		myList.remove(1);
+		myList.add(1,fourthElement);
+		if(!test(myList.get(0).getReturnValue(),firstElement))
 			ErrorString = "Test MainMethods 1 Failed";
-		if(!test(mylist.get(1).getReturnValue(),fourthElement))
+		if(!test(myList.get(1).getReturnValue(),fourthElement))
 			ErrorString = "Test MainMethods 2 Failed";
-		if(!test(mylist.get(2).getReturnValue(),thirdElement))
+		if(!test(myList.get(2).getReturnValue(),thirdElement))
 			ErrorString = "Test MainMethods 3 Failed";
 		return (ErrorString != "") ? false : true;
 	}
