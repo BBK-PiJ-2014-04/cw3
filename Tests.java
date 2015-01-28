@@ -68,6 +68,24 @@ public class Tests {
 		
 	}
 	
+	private static boolean UnitTestFunctionalMethods(FunctionalList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
+		String ErrorString = "";
+		myList.add(firstElement);
+		myList.add(0,secondElement);
+		myList.add(thirdElement);
+		myList.add(1,fourthElement);
+		if(test(myList.get(1).getReturnValue(),firstElement))
+			ErrorString += "Test MainMethods 1 Failed";
+		if(!test(myList.head(),secondElement))
+			ErrorString += "Test FunctionalMethods 2 Failed";
+		FunctionalList restList = myList.rest();
+		for(int i = 0; i < restList.size(); i++) {
+			if(!test(restList.get(i).getReturnValue(),myList.get(i+1).getReturnValue()))
+				ErrorString += "Test FunctionalMethods 3 Failed";
+		}
+		return (ErrorString != "") ? false : true;
+	}
+	
 	private static boolean UnitTestMainMethods(List mylist,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
 		String ErrorString = "";
 		mylist.add(firstElement);
@@ -81,7 +99,7 @@ public class Tests {
 			ErrorString = "Test MainMethods 2 Failed";
 		if(!test(mylist.get(2).getReturnValue(),thirdElement))
 			ErrorString = "Test MainMethods 3 Failed";
-		return false;
+		return (ErrorString != "") ? false : true;
 	}
 	
 	private static boolean UnitTestErrorMessages(List myList, Object firstElement, Object secondElement, Object thirdElement, Object fourthElement)

@@ -187,6 +187,9 @@ public class ArrayList implements List {
 	}
 	
 	//I'm not implementing the ToString method as it requires me to add it to the Interface
+	/**
+	 * Returns a comma-separated list of all the ordered elements of this list
+	 */
 	public String getList(){
 		String ReturnedList = "";
 		for(int i = 0; i < this.size(); i++) {
