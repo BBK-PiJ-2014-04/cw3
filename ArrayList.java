@@ -25,7 +25,7 @@ public class ArrayList implements List {
 	 * Constructor
 	 */
 	public ArrayList() {
-		myarray = new Object[2]; //I will initialise my array with a fixed size(that I will expand if needed)
+		myarray = new Object[100]; //I will initialise my array with a fixed size(that I will expand if needed)
 	}
 
 	
