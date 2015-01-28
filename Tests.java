@@ -71,7 +71,6 @@ public class Tests {
 			ErrorString += "Test 1 failed\n";
 		if(!myList.isEmpty()) 
 			ErrorString += "Test 2 failed\n";
-	
 		if(!test(myList.add(0, firstElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS)) 
 			ErrorString += "Test 3 failed\n";
 		if(!test(myList.add(-2, firstElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))

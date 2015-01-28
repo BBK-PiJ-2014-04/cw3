@@ -185,5 +185,15 @@ public class ArrayList implements List {
 			myarray = newarray;
 		}
 	}
+	
+	//I'm not implementing the ToString method as it requires me to add it to the Interface
+	public String GetList(){
+		String ReturnedList = "";
+		for(int i = 0; i < this.size(); i++) {
+			if(i > 0) ReturnedList += ", ";
+			ReturnedList += this.get(i).getReturnValue().toString();
+		}
+		return ReturnedList;
+	}
 
 }
