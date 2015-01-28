@@ -64,36 +64,37 @@ public class Tests {
 		
 	}
 	
-	private static boolean UnitTestMainMethods(List mylist, Object[] arrayOfElements)
+	private static boolean UnitTestErrorMessages(List myList, Object firstElement, Object secondElement, Object thirdElement, Object fourthElement)
 	{
 		String ErrorString = "";
-		if(mylist.size()!=0) 
+		if(myList.size()!=0) 
 			ErrorString += "Test 1 failed\n";
-		if(!mylist.isEmpty()) 
+		if(!myList.isEmpty()) 
 			ErrorString += "Test 2 failed\n";
-		if(!test(mylist.add(0, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS)) 
+	
+		if(!test(myList.add(0, firstElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS)) 
 			ErrorString += "Test 3 failed\n";
-		if(!test(mylist.add(-2, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
+		if(!test(myList.add(-2, firstElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
 			ErrorString += "Test 4 failed\n";
-		if(test(mylist.add(m).getError(),ErrorMessage.NO_ERROR))
+		if(test(myList.add(firstElement).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test 5 failed\n";
-		if(test(mylist.add(2, m).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
+		if(test(myList.add(2, secondElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
 			ErrorString += "Test 6 failed\n";
-		if(test(mylist.add(2, integTest).getError(),ErrorMessage.INVALID_ARGUMENT))
+		if(test(myList.add(2, secondElement).getError(),ErrorMessage.INVALID_ARGUMENT))
 			ErrorString += "Test 7 failed\n";
-		if(mylist.size() == 1) 
+		if(myList.size() == 1) 
 			ErrorString += "Test 8 failed\n";
-		if(test(mylist.add(m+3).getError(),ErrorMessage.NO_ERROR)) //this should tests the resize (for when the length of the array will be set to 2)
+		if(test(myList.add(thirdElement).getError(),ErrorMessage.NO_ERROR)) //this should tests the resize (for when the initial length of the array (on ArrayList) was set to 2)
 			ErrorString += "Test 9 failed\n";
-		if(test(mylist.add(stringTest).getError(),ErrorMessage.NO_ERROR)) //this should tests if we can put different types of object on the array
+		if(test(myList.add(fourthElement).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test 10 failed\n";
-		if(test(mylist.add(0,stringTest).getError(),ErrorMessage.NO_ERROR))
+		if(test(myList.add(0,fourthElement).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test 11 failed\n";
-		if(test(mylist.remove(0).getError(),ErrorMessage.NO_ERROR))
+		if(test(myList.remove(0).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test 12 failed\n";
-		if(test(mylist.remove(3).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
+		if(test(myList.remove(3).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
 			ErrorString += "Test 13 failed\n";
-		if(test(mylist.remove(1).getError(),ErrorMessage.NO_ERROR))
+		if(test(myList.remove(1).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test 14 failed\n";
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
