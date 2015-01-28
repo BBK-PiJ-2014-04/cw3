@@ -68,7 +68,19 @@ public class Tests {
 		
 	}
 	
-	private static boolean UnitTestMainMethods(List mylist) {
+	private static boolean UnitTestMainMethods(List mylist,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
+		String ErrorString = "";
+		mylist.add(firstElement);
+		mylist.add(secondElement);
+		mylist.add(thirdElement);
+		mylist.remove(1);
+		mylist.add(1,fourthElement);
+		if(!test(mylist.get(0).getReturnValue(),firstElement))
+			ErrorString = "Test MainMethods 1 Failed";
+		if(!test(mylist.get(1).getReturnValue(),fourthElement))
+			ErrorString = "Test MainMethods 2 Failed";
+		if(!test(mylist.get(2).getReturnValue(),thirdElement))
+			ErrorString = "Test MainMethods 3 Failed";
 		return false;
 	}
 	
@@ -76,33 +88,33 @@ public class Tests {
 	{
 		String ErrorString = "";
 		if(myList.size()!=0) 
-			ErrorString += "Test 1 failed\n";
+			ErrorString += "Test ErrorMessage 1 failed\n";
 		if(!myList.isEmpty()) 
-			ErrorString += "Test 2 failed\n";
+			ErrorString += "Test ErrorMessage 2 failed\n";
 		if(!test(myList.add(0, firstElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS)) 
-			ErrorString += "Test 3 failed\n";
+			ErrorString += "Test ErrorMessage 3 failed\n";
 		if(!test(myList.add(-2, firstElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
-			ErrorString += "Test 4 failed\n";
+			ErrorString += "Test ErrorMessage 4 failed\n";
 		if(test(myList.add(firstElement).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test 5 failed\n";
+			ErrorString += "Test ErrorMessage 5 failed\n";
 		if(test(myList.add(2, secondElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
-			ErrorString += "Test 6 failed\n";
+			ErrorString += "Test ErrorMessage 6 failed\n";
 		if(test(myList.add(2, secondElement).getError(),ErrorMessage.INVALID_ARGUMENT))
-			ErrorString += "Test 7 failed\n";
+			ErrorString += "Test ErrorMessage 7 failed\n";
 		if(myList.size() == 1) 
-			ErrorString += "Test 8 failed\n";
+			ErrorString += "Test ErrorMessage 8 failed\n";
 		if(test(myList.add(thirdElement).getError(),ErrorMessage.NO_ERROR)) //this should tests the resize (for when the initial length of the array (on ArrayList) was set to 2)
-			ErrorString += "Test 9 failed\n";
+			ErrorString += "Test ErrorMessage 9 failed\n";
 		if(test(myList.add(fourthElement).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test 10 failed\n";
+			ErrorString += "Test ErrorMessage 10 failed\n";
 		if(test(myList.add(0,fourthElement).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test 11 failed\n";
+			ErrorString += "Test ErrorMessage 11 failed\n";
 		if(test(myList.remove(0).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test 12 failed\n";
+			ErrorString += "Test ErrorMessage 12 failed\n";
 		if(test(myList.remove(3).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
-			ErrorString += "Test 13 failed\n";
+			ErrorString += "Test ErrorMessage 13 failed\n";
 		if(test(myList.remove(1).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test 14 failed\n";
+			ErrorString += "Test ErrorMessage 14 failed\n";
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
@@ -111,11 +123,11 @@ public class Tests {
 	/**
 	 * Tests if two strings are the same
 	 *
-	 * @param item1 the Original String
-	 * @param item2 the Compared STring
+	 * @param item1 the Original Object
+	 * @param item2 the Compared Object
 	 * @return true, if successful, otherwise false
 	 */
-	private static boolean test(String item1, String item2)
+	private static boolean test(Object item1, Object item2)
 	{
 		if(item1.equals(item2)) {
 			return true;
