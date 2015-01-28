@@ -20,7 +20,7 @@ public class Tests {
 		//List mylist = new ArrayList();
 		//List mylist = new LinkedList();
 		//FunctionalList mylist = new FunctionalArrayList();
-		FunctionalList mylist = new FunctionalLinkedList();
+		/*FunctionalList mylist = new FunctionalLinkedList();
 		FunctionalList FunctionalNewList = mylist.rest();
 		if(!test(mylist.head().getReturnValue().toString(),"test")) System.out.println("The head method did not pass the test");
 		System.out.printf("The head is %s",mylist.head().getReturnValue().toString(),"test");
@@ -59,9 +59,17 @@ public class Tests {
 		System.out.printf("Original List size: %d", mylist.size());
 		
 		//System.out.println(mylinkedlist.isEmpty());
-		//System.out.println(mylinkedlist.size());
+		//System.out.println(mylinkedlist.size());*/
+		ArrayList mylist = new ArrayList();
+		mylist.add("Hello");
+		mylist.add("My name is Salvo");
+		mylist.add("Nice to meet you");
+		System.out.println(mylist.getList());
 		
-		
+	}
+	
+	private static boolean UnitTestMainMethods(List mylist) {
+		return false;
 	}
 	
 	private static boolean UnitTestErrorMessages(List myList, Object firstElement, Object secondElement, Object thirdElement, Object fourthElement)

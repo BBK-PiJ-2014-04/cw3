@@ -112,8 +112,8 @@ public class ArrayList implements List {
 
 	/**
 	 * Adds an element to the list, inserting it at the given
-	 * position. The indeces of elements at and after that position
-	 * must be updated accordignly.
+	 * position. The indexes of elements at and after that position
+	 * must be updated accordingly.
 	 * 
 	 * If the index is negative or greater or equal than the size of
 	 * the list, then an appropriate error must be returned.
@@ -143,7 +143,7 @@ public class ArrayList implements List {
 					myarray[index] = item;
 				}
 			}
-			this.CheckArraySize();
+			this.checkArraySize();
 			return new ReturnObjectImpl(null);
 		}
 	}
@@ -166,7 +166,7 @@ public class ArrayList implements List {
 		}
 		else {
 			myarray[end] = item;
-			this.CheckArraySize();
+			this.checkArraySize();
 			return new ReturnObjectImpl(null);
 		}
 	}
@@ -176,7 +176,7 @@ public class ArrayList implements List {
 	 * If the actual size is equal to the maximum capacity of the array minus one, then
 	 * the actual array is copied into another array with double capacity.
 	 */
-	private void CheckArraySize() {
+	private void checkArraySize() {
 		if(size() == myarray.length-1) {
 			Object[] newarray = new Object[myarray.length * 2]; //doubling the size of the array
 			for(int i = 0; i < myarray.length; i++) {
@@ -187,7 +187,7 @@ public class ArrayList implements List {
 	}
 	
 	//I'm not implementing the ToString method as it requires me to add it to the Interface
-	public String GetList(){
+	public String getList(){
 		String ReturnedList = "";
 		for(int i = 0; i < this.size(); i++) {
 			if(i > 0) ReturnedList += ", ";
