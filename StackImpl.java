@@ -4,26 +4,19 @@ public class StackImpl extends AbstractStack {
 
 	public StackImpl(List list) {
 		super(list);
+		//As suggested by the lecturer, 
+		//we shouldn't do anything if a Null list is passed when the class is instantiated, 
+		//so a NullPointerException will be thrown in that case
 	}
 
 	@Override
 	public boolean isEmpty() {
-		if(this.internalList != null) {
-			return this.internalList.isEmpty();
-		}
-		else {
-			return true; //I'll put true as the return type is boolean and I can't return "Empty structure" as it'd be appropriate
-		}
+		return this.internalList.isEmpty(); 
 	}
 
 	@Override
 	public int size() {
-		if(this.internalList != null) {
-			return this.internalList.size();
-		}
-		else {
-			return 0;
-		}
+		return this.internalList.size();
 	}
 
 	@Override
