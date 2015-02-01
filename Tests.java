@@ -55,6 +55,7 @@ public class Tests {
 		if(isImproved) {
 			boolean isStillSame = true;
 			ImprovedStack myOriginalStack = (ImprovedStack) myStack;
+			ImprovedStack myReversedStack = new ImprovedStackImpl();
 			myOriginalStack.remove(null);
 			if(myStack.size() != 3)
 				ErrorString += "Test Stack 11 (ImprovedStack) failed\n";
@@ -75,6 +76,29 @@ public class Tests {
 			if(!isStillSame)
 				ErrorString += "Test Stack 14 (ImprovedStack) failed\n";
 			//now, an object that is actually on the stack
+			isStillSame = true;
+			myOriginalStack.remove(firstElement); //I won't put this value in the test :)
+			if(myStack.size() != 2)
+				ErrorString += "Test Stack 15 (ImprovedStack) failed\n";
+			for(int i = 0; i < myStack.size(); i++) {
+				if(!test(myStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
+					if(i == 2) 
+						isStillSame = false;
+					else //this would mean that the removed element is not the intended one (the first one)
+						ErrorString += "Test Stack 16 (ImprovedStack) failed\n";
+			}
+			if(isStillSame)
+				ErrorString += "Test Stack 17 (ImprovedStack) failed\n";
+			//Let's restore the original Stack
+			myOriginalStack = (ImprovedStack) myStack;
+			myReversedStack = myOriginalStack.reverse();
+			Object[] ArrayOriginalStack = new Object[myOriginalStack.size()];
+			for(int i = myOriginalStack.size(); i > 0; i--){
+				ArrayOriginalStack[i] = myOriginalStack.pop();
+			}
+			for(int i = ; i > myOriginalStack.size(); i++){
+				ArrayOriginalStack[i] = myOriginalStack.pop();
+			}
 		}
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
