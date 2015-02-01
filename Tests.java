@@ -204,27 +204,27 @@ public class Tests {
 			ErrorString += "Test ErrorMessage 6 failed\n";
 		if(test(myList.add(2, secondElement).getError(),ErrorMessage.INVALID_ARGUMENT))
 			ErrorString += "Test ErrorMessage 7 failed\n";
-		if(myList.size() == 1) 
+		if(myList.size() != 1) 
 			ErrorString += "Test ErrorMessage 8 failed\n";
-		if(test(myList.add(thirdElement).getError(),ErrorMessage.NO_ERROR)) //this should tests the resize (for when the initial length of the array (on ArrayList) was set to 2)
+		if(!test(myList.add(thirdElement).getError(),ErrorMessage.NO_ERROR)) //this should tests the resize (for when the initial length of the array (on ArrayList) was set to 2)
 			ErrorString += "Test ErrorMessage 9 failed\n";
-		if(test(myList.add(fourthElement).getError(),ErrorMessage.NO_ERROR))
+		if(!test(myList.add(fourthElement).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test ErrorMessage 10 failed\n";
-		if(test(myList.add(0,fourthElement).getError(),ErrorMessage.NO_ERROR))
+		if(!test(myList.add(0,fourthElement).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test ErrorMessage 11 failed\n";
-		if(test(myList.remove(0).getError(),ErrorMessage.NO_ERROR))
+		if(!test(myList.remove(0).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test ErrorMessage 12 failed\n";
-		if(test(myList.remove(3).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
+		if(!test(myList.remove(3).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
 			ErrorString += "Test ErrorMessage 13 failed\n";
-		if(test(myList.remove(1).getError(),ErrorMessage.NO_ERROR))
+		if(!test(myList.remove(1).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test ErrorMessage 14 failed\n";
-		if(!test(myList.add(null),ErrorMessage.INVALID_ARGUMENT))
+		if(!test(myList.add(null).getError(),ErrorMessage.INVALID_ARGUMENT))
 			ErrorString += "Test ErrorMessage 15 failed\n";
 		if(myList.size()==0) 
 			ErrorString += "Test ErrorMessage 16 failed\n";
 		if(myList.isEmpty()) 
 			ErrorString += "Test ErrorMessage 17 failed\n";
-		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
+		System.out.println((ErrorString != "") ? ErrorString : "All the ErrorMessage tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
 	
