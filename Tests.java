@@ -56,11 +56,16 @@ public class Tests {
 			return;*/
 		
 		//SampleableList Test
-		if(!unitTestErrorMessages(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
+		/*if(!unitTestErrorMessages(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestMainMethods(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestSampleableMethods(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement))
+			return;
+		*/
+		
+		//Stack Test
+		if(!unitTestStack(new StackImpl(new LinkedList()),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement,false))
 			return;
 		
 		
