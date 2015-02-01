@@ -36,7 +36,7 @@ public class StackImpl extends AbstractStack {
 			//I've chosen this approach when the list is null as EMPTY_STRUCTURE looks the most appropriate message among the ones present on the ErrorMessage enum
 		}
 		else {
-			return new ReturnObjectImpl(this.internalList.get(size()-1));
+			return new ReturnObjectImpl(this.internalList.get(size()-1).getReturnValue());
 		}
 	}
 
