@@ -70,10 +70,15 @@ public class Tests {
 		
 		
 		//Stack Test
-		System.out.println("Stack(both Improved and not) Tests:");
+		System.out.println("Stack(both Improved and not) with LinkedList Tests:");
 		if(!unitTestStack(new StackImpl(new LinkedList()),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement,false))
 			return;
 		if(!unitTestStack(new ImprovedStackImpl(),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement,true))
+			return;
+		System.out.println("Stack Tests - End\n");
+		
+		System.out.println("Stack(both Improved and not) with ArrayList Tests:");
+		if(!unitTestStack(new StackImpl(new ArrayList()),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement,false))
 			return;
 		System.out.println("Stack Tests - End\n");
 		
@@ -117,51 +122,51 @@ public class Tests {
 			ErrorString += "Test Stack 10 failed\n";
 		if(isImproved) {
 			boolean isStillSame = true;
-			ImprovedStack myOriginalStack = (ImprovedStack) myStack;
-			Stack myCopiedStack = myStack;
+			ImprovedStackImpl NewStack = (ImprovedStackImpl)myStack;
+			//This will create copies of the original stack on which I'm going to run my tests. Also, I will reset this condition after every test.
+			ImprovedStack OriginalStack = (ImprovedStackImpl) NewStack.CloneStack();
+			Stack CopiedStack = (ImprovedStackImpl)NewStack.CloneStack();
 			ImprovedStack myReversedStack = new ImprovedStackImpl();
-			myOriginalStack.remove(null);
+			OriginalStack.remove(null);
 			if(myStack.size() != 3)
 				ErrorString += "Test Stack 11 (ImprovedStack) failed\n";
-			for(int i = 0; i < myCopiedStack.size(); i++) {
-				if(!test(myCopiedStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
+			for(int i = 0; i < CopiedStack.size(); i++) {
+				if(!test(CopiedStack.pop().getReturnValue(),OriginalStack.pop().getReturnValue()))
 					isStillSame = false;
 			}
 			if(!isStillSame)
 				ErrorString += "Test Stack 12 (ImprovedStack) failed\n";
 			isStillSame = true;
-			myOriginalStack = (ImprovedStack) myStack;
-			myCopiedStack = myStack;
-			myOriginalStack.remove("TESTTESTTEST"); //I won't put this value in the test :)
+			OriginalStack = (ImprovedStackImpl) NewStack.CloneStack();
+			CopiedStack = (ImprovedStackImpl)NewStack.CloneStack();
+			OriginalStack.remove("TESTTESTTEST"); //I won't put this value in the test :)
 			if(myStack.size() != 3)
 				ErrorString += "Test Stack 13 (ImprovedStack) failed\n";
-			for(int i = 0; i < myCopiedStack.size(); i++) {
-				if(!test(myCopiedStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
+			for(int i = 0; i < CopiedStack.size(); i++) {
+				if(!test(CopiedStack.pop().getReturnValue(),OriginalStack.pop().getReturnValue()))
 					isStillSame = false;
 			}
 			if(!isStillSame)
 				ErrorString += "Test Stack 14 (ImprovedStack) failed\n";
 			//now, an object that is actually on the stack
 			isStillSame = true;
-			myOriginalStack = (ImprovedStack) myStack;
-			myCopiedStack = myStack;
-			myOriginalStack.remove(firstElement); //I won't put this value in the test :)
-			if(myStack.size() != 2)
+			OriginalStack = (ImprovedStackImpl) NewStack.CloneStack();
+			CopiedStack = (ImprovedStackImpl)NewStack.CloneStack();
+			OriginalStack.remove(firstElement); //I won't put this value in the test :)
+			if(OriginalStack.size() != 2)
 				ErrorString += "Test Stack 15 (ImprovedStack) failed\n";
-			for(int i = 0; i < myCopiedStack.size(); i++) {
-				if(!test(myCopiedStack.top().getReturnValue(),myOriginalStack.top().getReturnValue()))
-					if(i == 2) 
+			for(int i = 0; i < CopiedStack.size(); i++) {
+				if(!test(CopiedStack.pop().getReturnValue(),OriginalStack.pop().getReturnValue()))
+					if(i == 0) 
 						isStillSame = false;
-					else //this would mean that the removed element is not the intended one (the first one)
-						ErrorString += "Test Stack 16 (ImprovedStack) failed\n";
 			}
 			if(isStillSame)
-				ErrorString += "Test Stack 17 (ImprovedStack) failed\n";
-			myOriginalStack = (ImprovedStack) myStack;
-			myReversedStack = myOriginalStack.reverse();
-			Object[] ArrayOriginalStack = new Object[myOriginalStack.size()];
-			for(int i = myOriginalStack.size(); i > 0; i--){
-				ArrayOriginalStack[i] = myOriginalStack.pop();
+				ErrorString += "Test Stack 16 (ImprovedStack) failed\n";
+			OriginalStack = (ImprovedStackImpl) NewStack.CloneStack();
+			CopiedStack = (ImprovedStackImpl)NewStack.CloneStack();
+			Object[] ArrayOriginalStack = new Object[OriginalStack.size()];
+			for(int i = OriginalStack.size()-1; i >= 0; i--){
+				ArrayOriginalStack[i] = OriginalStack.pop();
 			}
 			for(int i = 0; i < myReversedStack.size(); i++){
 				if(!test(ArrayOriginalStack[i],myReversedStack.pop().getReturnValue()))
