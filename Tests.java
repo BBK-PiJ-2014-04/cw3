@@ -53,7 +53,28 @@ public class Tests {
 		if(myStack.isEmpty())
 			ErrorString += "Test Stack 10 failed\n";
 		if(isImproved) {
-			
+			boolean isStillSame = true;
+			ImprovedStack myOriginalStack = (ImprovedStack) myStack;
+			myOriginalStack.remove(null);
+			if(myStack.size() != 3)
+				ErrorString += "Test Stack 11 (ImprovedStack) failed\n";
+			for(int i = 0; i < myStack.size(); i++) {
+				if(!test(myStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
+					isStillSame = false;
+			}
+			if(!isStillSame)
+				ErrorString += "Test Stack 12 (ImprovedStack) failed\n";
+			isStillSame = true;
+			myOriginalStack.remove("TESTTESTTEST"); //I won't put this value in the test :)
+			if(myStack.size() != 3)
+				ErrorString += "Test Stack 13 (ImprovedStack) failed\n";
+			for(int i = 0; i < myStack.size(); i++) {
+				if(!test(myStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
+					isStillSame = false;
+			}
+			if(!isStillSame)
+				ErrorString += "Test Stack 14 (ImprovedStack) failed\n";
+			//now, an object that is actually on the stack
 		}
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
