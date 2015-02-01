@@ -19,7 +19,7 @@ public class Tests {
 	
 	private static boolean unitTestStack(Stack mystack,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
 		String ErrorString = "";
-		return false
+		return false;
 	}
 	
 	private static boolean unitTestSampleableMethods(SampleableList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
@@ -37,6 +37,7 @@ public class Tests {
 			ErrorString += "Test SampledMethods 2 Failed";
 		if(!test(sampledList.get(1).getReturnValue(),thirdElement))
 			ErrorString += "Test SampledMethods 3 Failed";
+		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
 	
@@ -57,6 +58,7 @@ public class Tests {
 			if(!test(restList.get(i).getReturnValue(),myList.get(i+1).getReturnValue()))
 				ErrorString += "Test FunctionalMethods " + i+4 + " Failed";
 		}
+		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
 	
@@ -73,6 +75,7 @@ public class Tests {
 			ErrorString = "Test MainMethods 2 Failed";
 		if(!test(myList.get(2).getReturnValue(),thirdElement))
 			ErrorString = "Test MainMethods 3 Failed";
+		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
 	
@@ -107,6 +110,10 @@ public class Tests {
 			ErrorString += "Test ErrorMessage 13 failed\n";
 		if(test(myList.remove(1).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test ErrorMessage 14 failed\n";
+		if(myList.size()==0) 
+			ErrorString += "Test ErrorMessage 15 failed\n";
+		if(myList.isEmpty()) 
+			ErrorString += "Test ErrorMessage 16 failed\n";
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
