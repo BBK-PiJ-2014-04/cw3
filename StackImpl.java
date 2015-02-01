@@ -49,6 +49,14 @@ public class StackImpl extends AbstractStack {
 		return Popped;
 	}
 	
+	public Stack CloneStack() {
+		Stack ClonedStack = new StackImpl(new LinkedList());
+		for(int i = this.size(); i > 0; i--) {
+			ClonedStack.push(this.internalList.get(i-1).getReturnValue());
+		}
+		return ClonedStack;
+	}
+	
 	
 
 }
