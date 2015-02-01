@@ -17,41 +17,44 @@ public class Tests {
 		System.out.println("CourseWork 3");
 	}
 	
-	private static boolean unitTestStack(Stack mystack,Object firstElement, 
+	private static boolean unitTestStack(Stack myStack,Object firstElement, 
 			Object secondElement, Object thirdElement, 
-			Object fourthElement, Object fifthElement) {
+			Object fourthElement, Object fifthElement, boolean isImproved) {
 		String ErrorString = "";
 		int myPreviousSize = 0;
 		ReturnObject MyPreviousTop = null;
 		ReturnObject MyNewTop = null;
-		if(mystack.size()!=0) 
+		if(myStack.size()!=0) 
 			ErrorString += "Test Stack 1 failed\n";
-		if(!mystack.isEmpty()) 
+		if(!myStack.isEmpty()) 
 			ErrorString += "Test Stack 2 failed\n";
-		if(!test(mystack.top().getError(),ErrorMessage.EMPTY_STRUCTURE)) 
+		if(!test(myStack.top().getError(),ErrorMessage.EMPTY_STRUCTURE)) 
 			ErrorString += "Test Stack 3 failed\n";
-		mystack.push(firstElement);
-		mystack.push(secondElement);
-		mystack.push(thirdElement);
-		mystack.push(fourthElement);
-		mystack.push(fifthElement);
-		if(mystack.size()!=5) 
+		myStack.push(firstElement);
+		myStack.push(secondElement);
+		myStack.push(thirdElement);
+		myStack.push(fourthElement);
+		myStack.push(fifthElement);
+		if(myStack.size()!=5) 
 			ErrorString += "Test Stack 4 failed\n";
-		myPreviousSize = mystack.size();
-		MyPreviousTop = mystack.top();
-		if(mystack.size() != myPreviousSize)
+		myPreviousSize = myStack.size();
+		MyPreviousTop = myStack.top();
+		if(myStack.size() != myPreviousSize)
 			ErrorString += "Test Stack 5 failed\n";
-		MyNewTop = mystack.pop();
+		MyNewTop = myStack.pop();
 		if(!test(MyNewTop.getReturnValue(),MyPreviousTop.getReturnValue()))
 			ErrorString += "Test Stack 6 failed\n";
-		if(mystack.size() == myPreviousSize)
+		if(myStack.size() == myPreviousSize)
 			ErrorString += "Test Stack 7 failed\n";
-		if(test(MyNewTop.getReturnValue(),mystack.pop()))
+		if(test(MyNewTop.getReturnValue(),myStack.pop()))
 			ErrorString += "Test Stack 8 failed\n";
-		if(mystack.size() != 3)
+		if(myStack.size() != 3)
 			ErrorString += "Test Stack 9 failed\n";
-		if(mystack.isEmpty())
+		if(myStack.isEmpty())
 			ErrorString += "Test Stack 10 failed\n";
+		if(isImproved) {
+			
+		}
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
