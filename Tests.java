@@ -30,7 +30,8 @@ public class Tests {
 		FifthElement.push("Testing");
 		FifthElement.push(3);
 		
-		
+		if(unitTestErrorMessages(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
 	}
 	
 	private static boolean unitTestStack(Stack myStack,Object firstElement, 
@@ -121,7 +122,9 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
-	private static boolean unitTestSampleableMethods(SampleableList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
+	private static boolean unitTestSampleableMethods(SampleableList myList,Object firstElement, 
+			Object secondElement, Object thirdElement, 
+			Object fourthElement, Object fifthElement) {
 		String ErrorString = "";
 		myList.add(firstElement);
 		myList.add(0,secondElement);
@@ -140,7 +143,9 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
-	private static boolean unitTestFunctionalMethods(FunctionalList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
+	private static boolean unitTestFunctionalMethods(FunctionalList myList,Object firstElement, 
+			Object secondElement, Object thirdElement, 
+			Object fourthElement) {
 		String ErrorString = "";
 		if(!test(myList.add(0, firstElement).getError(),ErrorMessage.EMPTY_STRUCTURE)) 
 			ErrorString += "Test FunctionalMethods 1 Failed";
@@ -161,7 +166,9 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
-	private static boolean unitTestMainMethods(List myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
+	private static boolean unitTestMainMethods(List myList,Object firstElement, 
+			Object secondElement, Object thirdElement, 
+			Object fourthElement) {
 		String ErrorString = "";
 		myList.add(firstElement);
 		myList.add(secondElement);
@@ -178,7 +185,9 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
-	private static boolean unitTestErrorMessages(List myList, Object firstElement, Object secondElement, Object thirdElement, Object fourthElement)
+	private static boolean unitTestErrorMessages(List myList, Object firstElement, 
+			Object secondElement, Object thirdElement, 
+			Object fourthElement)
 	{
 		String ErrorString = "";
 		if(myList.size()!=0) 
@@ -189,9 +198,9 @@ public class Tests {
 			ErrorString += "Test ErrorMessage 3 failed\n";
 		if(!test(myList.add(-2, firstElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
 			ErrorString += "Test ErrorMessage 4 failed\n";
-		if(test(myList.add(firstElement).getError(),ErrorMessage.NO_ERROR))
+		if(!test(myList.add(firstElement).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test ErrorMessage 5 failed\n";
-		if(test(myList.add(2, secondElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
+		if(!test(myList.add(2, secondElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
 			ErrorString += "Test ErrorMessage 6 failed\n";
 		if(test(myList.add(2, secondElement).getError(),ErrorMessage.INVALID_ARGUMENT))
 			ErrorString += "Test ErrorMessage 7 failed\n";
@@ -209,10 +218,12 @@ public class Tests {
 			ErrorString += "Test ErrorMessage 13 failed\n";
 		if(test(myList.remove(1).getError(),ErrorMessage.NO_ERROR))
 			ErrorString += "Test ErrorMessage 14 failed\n";
-		if(myList.size()==0) 
+		if(!test(myList.add(null),ErrorMessage.INVALID_ARGUMENT))
 			ErrorString += "Test ErrorMessage 15 failed\n";
-		if(myList.isEmpty()) 
+		if(myList.size()==0) 
 			ErrorString += "Test ErrorMessage 16 failed\n";
+		if(myList.isEmpty()) 
+			ErrorString += "Test ErrorMessage 17 failed\n";
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
