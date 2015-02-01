@@ -31,10 +31,21 @@ public class Tests {
 		FifthElement.push(3);
 		
 		//ArrayList Test
+		/*
 		if(!unitTestErrorMessages(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestMainMethods(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
+		*/
+		
+		//FunctionalArrayList Test
+		if(!unitTestErrorMessages(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
+		if(!unitTestMainMethods(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
+		if(!unitTestFunctionalMethods(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
+		
 		
 	}
 	
@@ -138,11 +149,11 @@ public class Tests {
 		SampleableList sampledList = myList.sample();
 		//In this case, I want to try and test the get method of the sampledList against the original added elements
 		if(!test(sampledList.get(0).getReturnValue(),secondElement))
-			ErrorString += "Test SampledMethods 1 Failed";
+			ErrorString += "Test SampledMethods 1 Failed\n";
 		if(!test(sampledList.get(1).getReturnValue(),fifthElement))
-			ErrorString += "Test SampledMethods 2 Failed";
+			ErrorString += "Test SampledMethods 2 Failed\n";
 		if(!test(sampledList.get(1).getReturnValue(),thirdElement))
-			ErrorString += "Test SampledMethods 3 Failed";
+			ErrorString += "Test SampledMethods 3 Failed\n";
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
@@ -151,20 +162,20 @@ public class Tests {
 			Object secondElement, Object thirdElement, 
 			Object fourthElement) {
 		String ErrorString = "";
-		if(!test(myList.add(0, firstElement).getError(),ErrorMessage.EMPTY_STRUCTURE)) 
-			ErrorString += "Test FunctionalMethods 1 Failed";
+		if(!test(myList.head().getError(),ErrorMessage.EMPTY_STRUCTURE)) 
+			ErrorString += "Test FunctionalMethods 1 Failed\n";
 		myList.add(firstElement);
 		myList.add(0,secondElement);
 		myList.add(thirdElement);
 		myList.add(1,fourthElement);
 		if(test(myList.get(1).getReturnValue(),firstElement))
-			ErrorString += "Test FunctionalMethods 2 Failed";
-		if(!test(myList.head(),secondElement))
-			ErrorString += "Test FunctionalMethods 3 Failed";
+			ErrorString += "Test FunctionalMethods 2 Failed\n";
+		if(!test(myList.head().getReturnValue(),secondElement))
+			ErrorString += "Test FunctionalMethods 3 Failed\n";
 		FunctionalList restList = myList.rest();
 		for(int i = 0; i < restList.size(); i++) {
 			if(!test(restList.get(i).getReturnValue(),myList.get(i+1).getReturnValue()))
-				ErrorString += "Test FunctionalMethods " + i+4 + " Failed";
+				ErrorString += "Test FunctionalMethods " + i+4 + " Failed\n";
 		}
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
@@ -180,11 +191,11 @@ public class Tests {
 		myList.remove(1);
 		myList.add(1,fourthElement);
 		if(!test(myList.get(0).getReturnValue(),firstElement))
-			ErrorString = "Test MainMethods 1 Failed";
+			ErrorString = "Test MainMethods 1 Failed\n";
 		if(!test(myList.get(1).getReturnValue(),fourthElement))
-			ErrorString = "Test MainMethods 2 Failed";
+			ErrorString = "Test MainMethods 2 Failed\n";
 		if(!test(myList.get(2).getReturnValue(),thirdElement))
-			ErrorString = "Test MainMethods 3 Failed";
+			ErrorString = "Test MainMethods 3 Failed\n";
 		System.out.println((ErrorString != "") ? ErrorString : "All the MainMethods tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
