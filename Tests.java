@@ -15,6 +15,21 @@ public class Tests {
 		System.out.println("Welcome to the test area");
 		System.out.println("The tests and code behind have been designed by Salvatore Cardali - Msc Computer Science");
 		System.out.println("CourseWork 3");
+		//First of all, let's write our five element of the Lists/Stacks
+		List FirstElement = new ArrayList();
+		FirstElement.add(0);
+		FirstElement.add("Mytest");
+		FirstElement.add(2.45643);
+		List SecondElement = new LinkedList();
+		SecondElement.add("Rock");
+		SecondElement.add("Paper");
+		SecondElement.add("Scissor");
+		int thirdElement = 42;
+		String FourthElement = "Everything I say is false";
+		Stack FifthElement = new StackImpl(new LinkedList());
+		FifthElement.push("Testing");
+		FifthElement.push(3);
+		
 		
 	}
 	
