@@ -30,8 +30,12 @@ public class Tests {
 		FifthElement.push("Testing");
 		FifthElement.push(3);
 		
-		if(unitTestErrorMessages(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+		//ArrayList Test
+		if(!unitTestErrorMessages(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
+		if(!unitTestMainMethods(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
+		
 	}
 	
 	private static boolean unitTestStack(Stack myStack,Object firstElement, 
@@ -181,7 +185,7 @@ public class Tests {
 			ErrorString = "Test MainMethods 2 Failed";
 		if(!test(myList.get(2).getReturnValue(),thirdElement))
 			ErrorString = "Test MainMethods 3 Failed";
-		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
+		System.out.println((ErrorString != "") ? ErrorString : "All the MainMethods tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
 	
