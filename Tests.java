@@ -19,7 +19,27 @@ public class Tests {
 	
 	private static boolean unitTestStack(Stack mystack,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
 		String ErrorString = "";
-		return false;
+		int myPreviousSize = 0;
+		int myNewsize = 0;
+		Object MyPreviousTop = null;
+		Object MyNewTop = null;
+		if(mystack.size()!=0) 
+			ErrorString += "Test Stack 1 failed\n";
+		if(!mystack.isEmpty()) 
+			ErrorString += "Test Stack 2 failed\n";
+		if(!test(mystack.top().getError(),ErrorMessage.EMPTY_STRUCTURE)) 
+			ErrorString += "Test Stack 3 failed\n";
+		mystack.push(firstElement);
+		mystack.push(secondElement);
+		mystack.push(thirdElement);
+		mystack.push(fourthElement);
+		mystack.push(fifthElement);
+		if(mystack.size()!=5) 
+			ErrorString += "Test Stack 4 failed\n";
+		myPreviousSize = mystack.size();
+		MyPreviousTop = mystack.top();
+		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
+		return (ErrorString != "") ? false : true;
 	}
 	
 	private static boolean unitTestSampleableMethods(SampleableList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
