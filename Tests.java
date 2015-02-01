@@ -15,6 +15,7 @@ public class Tests {
 		System.out.println("Welcome to the test area");
 		System.out.println("The tests and code behind have been designed by Salvatore Cardali - Msc Computer Science");
 		System.out.println("CourseWork 3");
+		
 	}
 	
 	private static boolean unitTestStack(Stack myStack,Object firstElement, 
@@ -96,8 +97,9 @@ public class Tests {
 			for(int i = myOriginalStack.size(); i > 0; i--){
 				ArrayOriginalStack[i] = myOriginalStack.pop();
 			}
-			for(int i = ; i > myOriginalStack.size(); i++){
-				ArrayOriginalStack[i] = myOriginalStack.pop();
+			for(int i = 0; i < myOriginalStack.size(); i++){
+				if(!test(ArrayOriginalStack[i],myOriginalStack.pop().getReturnValue()))
+					ErrorString += "Test Stack 18 (ImprovedStack) failed\n";
 			}
 		}
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
