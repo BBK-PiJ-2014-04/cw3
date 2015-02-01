@@ -17,12 +17,13 @@ public class Tests {
 		System.out.println("CourseWork 3");
 	}
 	
-	private static boolean unitTestStack(Stack mystack,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
+	private static boolean unitTestStack(Stack mystack,Object firstElement, 
+			Object secondElement, Object thirdElement, 
+			Object fourthElement, Object fifthElement) {
 		String ErrorString = "";
 		int myPreviousSize = 0;
-		int myNewsize = 0;
-		Object MyPreviousTop = null;
-		Object MyNewTop = null;
+		ReturnObject MyPreviousTop = null;
+		ReturnObject MyNewTop = null;
 		if(mystack.size()!=0) 
 			ErrorString += "Test Stack 1 failed\n";
 		if(!mystack.isEmpty()) 
@@ -38,6 +39,19 @@ public class Tests {
 			ErrorString += "Test Stack 4 failed\n";
 		myPreviousSize = mystack.size();
 		MyPreviousTop = mystack.top();
+		if(mystack.size() != myPreviousSize)
+			ErrorString += "Test Stack 5 failed\n";
+		MyNewTop = mystack.pop();
+		if(!test(MyNewTop.getReturnValue(),MyPreviousTop.getReturnValue()))
+			ErrorString += "Test Stack 6 failed\n";
+		if(mystack.size() == myPreviousSize)
+			ErrorString += "Test Stack 7 failed\n";
+		if(test(MyNewTop.getReturnValue(),mystack.pop()))
+			ErrorString += "Test Stack 8 failed\n";
+		if(mystack.size() != 3)
+			ErrorString += "Test Stack 9 failed\n";
+		if(mystack.isEmpty())
+			ErrorString += "Test Stack 10 failed\n";
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
