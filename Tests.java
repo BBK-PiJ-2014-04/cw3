@@ -13,7 +13,13 @@ public class Tests {
 	public static void main(String [] args)
 	{		
 		System.out.println("Welcome to the test area");
-		
+		System.out.println("The tests and code behind have been designed by Salvatore Cardali - Msc Computer Science");
+		System.out.println("CourseWork 3");
+	}
+	
+	private static boolean unitTestStack(Stack mystack,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
+		String ErrorString = "";
+		return false
 	}
 	
 	private static boolean unitTestSampleableMethods(SampleableList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
