@@ -14,7 +14,7 @@ public class Tests {
 	{		
 		System.out.println("Welcome to the test area");
 		System.out.println("The tests and code behind have been designed by Salvatore Cardali - Msc Computer Science");
-		System.out.println("CourseWork 3");
+		System.out.println("CourseWork 3\n");
 		//First of all, let's write our five element of the Lists/Stacks
 		List FirstElement = new ArrayList();
 		FirstElement.add(0);
@@ -31,41 +31,51 @@ public class Tests {
 		FifthElement.push(3);
 		
 		//ArrayList Test
-		System.out.println("Array List Tests:");
+		System.out.println("ArrayList Tests:");
 		if(!unitTestErrorMessages(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestMainMethods(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
-		System.out.println("Array List Tests - End\n");
+		System.out.println("ArrayList Tests - End\n");
 		
 		//FunctionalArrayList Test
+		System.out.println("FunctionalArrayList Tests:");
 		if(!unitTestErrorMessages(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestMainMethods(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestFunctionalMethods(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
+		System.out.println("FunctionalArrayList Tests - End\n");
 		
 		//FunctionalLinkedList Test
+		System.out.println("FunctionalLinkedList Tests:");
 		if(!unitTestErrorMessages(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestMainMethods(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestFunctionalMethods(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
+		System.out.println("FunctionalLinkedList Tests - End\n");
 		
 		//SampleableList Test
+		System.out.println("SampleableListImpl Tests:");
 		if(!unitTestErrorMessages(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestMainMethods(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestSampleableMethods(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement))
 			return;
+		System.out.println("SampleableListImpl Tests - End\n");
 		
 		
 		//Stack Test
+		System.out.println("Stack(both Improved and not) Tests:");
 		if(!unitTestStack(new StackImpl(new LinkedList()),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement,false))
 			return;
+		if(!unitTestStack(new ImprovedStackImpl(),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement,true))
+			return;
+		System.out.println("Stack Tests - End\n");
 		
 		
 	}
@@ -108,33 +118,38 @@ public class Tests {
 		if(isImproved) {
 			boolean isStillSame = true;
 			ImprovedStack myOriginalStack = (ImprovedStack) myStack;
+			Stack myCopiedStack = myStack;
 			ImprovedStack myReversedStack = new ImprovedStackImpl();
 			myOriginalStack.remove(null);
 			if(myStack.size() != 3)
 				ErrorString += "Test Stack 11 (ImprovedStack) failed\n";
-			for(int i = 0; i < myStack.size(); i++) {
-				if(!test(myStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
+			for(int i = 0; i < myCopiedStack.size(); i++) {
+				if(!test(myCopiedStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
 					isStillSame = false;
 			}
 			if(!isStillSame)
 				ErrorString += "Test Stack 12 (ImprovedStack) failed\n";
 			isStillSame = true;
+			myOriginalStack = (ImprovedStack) myStack;
+			myCopiedStack = myStack;
 			myOriginalStack.remove("TESTTESTTEST"); //I won't put this value in the test :)
 			if(myStack.size() != 3)
 				ErrorString += "Test Stack 13 (ImprovedStack) failed\n";
-			for(int i = 0; i < myStack.size(); i++) {
-				if(!test(myStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
+			for(int i = 0; i < myCopiedStack.size(); i++) {
+				if(!test(myCopiedStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
 					isStillSame = false;
 			}
 			if(!isStillSame)
 				ErrorString += "Test Stack 14 (ImprovedStack) failed\n";
 			//now, an object that is actually on the stack
 			isStillSame = true;
+			myOriginalStack = (ImprovedStack) myStack;
+			myCopiedStack = myStack;
 			myOriginalStack.remove(firstElement); //I won't put this value in the test :)
 			if(myStack.size() != 2)
 				ErrorString += "Test Stack 15 (ImprovedStack) failed\n";
-			for(int i = 0; i < myStack.size(); i++) {
-				if(!test(myStack.pop().getReturnValue(),myOriginalStack.pop().getReturnValue()))
+			for(int i = 0; i < myCopiedStack.size(); i++) {
+				if(!test(myCopiedStack.top().getReturnValue(),myOriginalStack.top().getReturnValue()))
 					if(i == 2) 
 						isStillSame = false;
 					else //this would mean that the removed element is not the intended one (the first one)
@@ -142,19 +157,19 @@ public class Tests {
 			}
 			if(isStillSame)
 				ErrorString += "Test Stack 17 (ImprovedStack) failed\n";
-			//Let's restore the original Stack
 			myOriginalStack = (ImprovedStack) myStack;
 			myReversedStack = myOriginalStack.reverse();
 			Object[] ArrayOriginalStack = new Object[myOriginalStack.size()];
 			for(int i = myOriginalStack.size(); i > 0; i--){
 				ArrayOriginalStack[i] = myOriginalStack.pop();
 			}
-			for(int i = 0; i < myOriginalStack.size(); i++){
-				if(!test(ArrayOriginalStack[i],myOriginalStack.pop().getReturnValue()))
+			for(int i = 0; i < myReversedStack.size(); i++){
+				if(!test(ArrayOriginalStack[i],myReversedStack.pop().getReturnValue()))
 					ErrorString += "Test Stack 18 (ImprovedStack) failed\n";
 			}
+			//I need to test what happens if I pop an empty structure, as I've got a strange Exception before
 		}
-		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
+		System.out.println((ErrorString != "") ? ErrorString : "All the " + ((isImproved) ? "ImprovedStack" : "Stack") + " tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
 	

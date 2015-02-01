@@ -32,7 +32,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 			//no top() on an empty list. 
 		}
 		else {
-			return new ReturnObjectImpl(this.mystack.get(size()-1));
+			return new ReturnObjectImpl(this.mystack.get(size()-1).getReturnValue());
 		}
 	}
 
@@ -50,7 +50,7 @@ public class ImprovedStackImpl implements ImprovedStack {
 		ImprovedStack ReversedStack = new ImprovedStackImpl();
 		//the idea is to push elements in the new stack starting from the top of the old stack.
 		for(int i = 0; i < this.size(); i++) {
-			ReversedStack.push(this.mystack.get(i));
+			ReversedStack.push(this.mystack.get(i).getReturnValue());
 		}
 		return ReversedStack;
 	}
