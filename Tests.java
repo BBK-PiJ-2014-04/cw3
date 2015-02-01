@@ -11,64 +11,12 @@ public class Tests {
 	 * @param args the arguments
 	 */
 	public static void main(String [] args)
-	{
-		//Object[] myarray = new Object[100];
-		//System.out.print(myarray[2]); //testing if returns null with no errors
-		
-		
+	{		
 		System.out.println("Welcome to the test area");
-		//List mylist = new ArrayList();
-		//List mylist = new LinkedList();
-		//FunctionalList mylist = new FunctionalArrayList();
-		/*FunctionalList mylist = new FunctionalLinkedList();
-		FunctionalList FunctionalNewList = mylist.rest();
-		if(!test(mylist.head().getReturnValue().toString(),"test")) System.out.println("The head method did not pass the test");
-		System.out.printf("The head is %s",mylist.head().getReturnValue().toString(),"test");
-		
-		//Add here the tests for SampleableList.
-		//Add here the tests for StackImpl
-		//Add here the tests for ImprovedStackImpl
-		
-		System.out.println("Original List");
-		for(int i = 0; i < mylist.size(); i++) {
-			System.out.println(mylist.get(i).getReturnValue());
-		}
-		
-		System.out.println("");
-		System.out.println("Rest List");
-		for(int i = 0; i < FunctionalNewList.size(); i++) {
-			System.out.println(FunctionalNewList.get(i).getReturnValue());
-		}
-		System.out.printf("Rest List size: %d", FunctionalNewList.size());
-		
-		System.out.println("");
-		FunctionalNewList.remove(1);
-		System.out.println("Modified Rest List");
-		for(int i = 0; i < FunctionalNewList.size(); i++) {
-			System.out.println(FunctionalNewList.get(i).getReturnValue());
-		}
-		
-		System.out.printf("Modified Rest List size: %d", FunctionalNewList.size());
-		
-		System.out.println("");
-		System.out.println("Checking Original List Again");
-		for(int i = 0; i < mylist.size(); i++) {
-			System.out.println(mylist.get(i).getReturnValue());
-		}
-		
-		System.out.printf("Original List size: %d", mylist.size());
-		
-		//System.out.println(mylinkedlist.isEmpty());
-		//System.out.println(mylinkedlist.size());*/
-		ArrayList mylist = new ArrayList();
-		mylist.add("Hello");
-		mylist.add("My name is Salvo");
-		mylist.add("Nice to meet you");
-		//System.out.println(mylist.getList()); deprecated
 		
 	}
 	
-	private static boolean UnitTestSampleableMethods(SampleableList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
+	private static boolean unitTestSampleableMethods(SampleableList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement, Object fifthElement) {
 		String ErrorString = "";
 		myList.add(firstElement);
 		myList.add(0,secondElement);
@@ -86,25 +34,27 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
-	private static boolean UnitTestFunctionalMethods(FunctionalList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
+	private static boolean unitTestFunctionalMethods(FunctionalList myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
 		String ErrorString = "";
+		if(!test(myList.add(0, firstElement).getError(),ErrorMessage.EMPTY_STRUCTURE)) 
+			ErrorString += "Test FunctionalMethods 1 Failed";
 		myList.add(firstElement);
 		myList.add(0,secondElement);
 		myList.add(thirdElement);
 		myList.add(1,fourthElement);
 		if(test(myList.get(1).getReturnValue(),firstElement))
-			ErrorString += "Test FunctionalMethods 1 Failed";
-		if(!test(myList.head(),secondElement))
 			ErrorString += "Test FunctionalMethods 2 Failed";
+		if(!test(myList.head(),secondElement))
+			ErrorString += "Test FunctionalMethods 3 Failed";
 		FunctionalList restList = myList.rest();
 		for(int i = 0; i < restList.size(); i++) {
 			if(!test(restList.get(i).getReturnValue(),myList.get(i+1).getReturnValue()))
-				ErrorString += "Test FunctionalMethods " + i+3 + " Failed";
+				ErrorString += "Test FunctionalMethods " + i+4 + " Failed";
 		}
 		return (ErrorString != "") ? false : true;
 	}
 	
-	private static boolean UnitTestMainMethods(List myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
+	private static boolean unitTestMainMethods(List myList,Object firstElement, Object secondElement, Object thirdElement, Object fourthElement) {
 		String ErrorString = "";
 		myList.add(firstElement);
 		myList.add(secondElement);
@@ -120,7 +70,7 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
-	private static boolean UnitTestErrorMessages(List myList, Object firstElement, Object secondElement, Object thirdElement, Object fourthElement)
+	private static boolean unitTestErrorMessages(List myList, Object firstElement, Object secondElement, Object thirdElement, Object fourthElement)
 	{
 		String ErrorString = "";
 		if(myList.size()!=0) 
@@ -153,6 +103,48 @@ public class Tests {
 			ErrorString += "Test ErrorMessage 14 failed\n";
 		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
 		return (ErrorString != "") ? false : true;
+	}
+	
+	/**
+	 * 
+	 */
+	private static void developmentTests() {
+		//List mylist = new ArrayList();
+		//List mylist = new LinkedList();
+		//FunctionalList mylist = new FunctionalArrayList();
+		FunctionalList mylist = new FunctionalLinkedList();
+		FunctionalList FunctionalNewList = mylist.rest();
+		if(!test(mylist.head().getReturnValue().toString(),"test")) System.out.println("The head method did not pass the test");
+		System.out.printf("The head is %s",mylist.head().getReturnValue().toString(),"test");
+		
+		System.out.println("Original List");
+		for(int i = 0; i < mylist.size(); i++) {
+			System.out.println(mylist.get(i).getReturnValue());
+		}
+		
+		System.out.println("");
+		System.out.println("Rest List");
+		for(int i = 0; i < FunctionalNewList.size(); i++) {
+			System.out.println(FunctionalNewList.get(i).getReturnValue());
+		}
+		System.out.printf("Rest List size: %d", FunctionalNewList.size());
+		
+		System.out.println("");
+		FunctionalNewList.remove(1);
+		System.out.println("Modified Rest List");
+		for(int i = 0; i < FunctionalNewList.size(); i++) {
+			System.out.println(FunctionalNewList.get(i).getReturnValue());
+		}
+		
+		System.out.printf("Modified Rest List size: %d", FunctionalNewList.size());
+		
+		System.out.println("");
+		System.out.println("Checking Original List Again");
+		for(int i = 0; i < mylist.size(); i++) {
+			System.out.println(mylist.get(i).getReturnValue());
+		}
+		
+		System.out.printf("Original List size: %d", mylist.size());
 	}
 	
 	
