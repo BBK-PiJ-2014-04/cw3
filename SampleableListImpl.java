@@ -9,7 +9,7 @@ public class SampleableListImpl extends LinkedList implements SampleableList {
 		SampleableList mySampledList = new SampleableListImpl();
 		for(int i = 0; i < this.size(); i++) {
 			if(i % 2 == 0) { //Module operation used to determine whether the number is odd or not.
-				mySampledList.add(this.get(i));
+				mySampledList.add(this.get(i).getReturnValue());
 			}
 		}
 		return mySampledList;

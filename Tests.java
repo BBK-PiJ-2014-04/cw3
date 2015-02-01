@@ -39,11 +39,28 @@ public class Tests {
 		*/
 		
 		//FunctionalArrayList Test
-		if(!unitTestErrorMessages(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+		/*if(!unitTestErrorMessages(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestMainMethods(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestFunctionalMethods(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
+		*/
+		
+		//FunctionalLinkedList Test
+		/*if(!unitTestErrorMessages(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
+		if(!unitTestMainMethods(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
+		if(!unitTestFunctionalMethods(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;*/
+		
+		//SampleableList Test
+		if(!unitTestErrorMessages(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
+		if(!unitTestMainMethods(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
+			return;
+		if(!unitTestSampleableMethods(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement))
 			return;
 		
 		
@@ -152,9 +169,11 @@ public class Tests {
 			ErrorString += "Test SampledMethods 1 Failed\n";
 		if(!test(sampledList.get(1).getReturnValue(),fifthElement))
 			ErrorString += "Test SampledMethods 2 Failed\n";
-		if(!test(sampledList.get(1).getReturnValue(),thirdElement))
+		if(!test(sampledList.get(2).getReturnValue(),thirdElement))
 			ErrorString += "Test SampledMethods 3 Failed\n";
-		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
+		if(sampledList.size() != 3)
+			ErrorString += "Test SampledMethods 4 Failed\n";
+		System.out.println((ErrorString != "") ? ErrorString : "All the SampledMethods tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
 	
@@ -177,7 +196,7 @@ public class Tests {
 			if(!test(restList.get(i).getReturnValue(),myList.get(i+1).getReturnValue()))
 				ErrorString += "Test FunctionalMethods " + i+4 + " Failed\n";
 		}
-		System.out.println((ErrorString != "") ? ErrorString : "All the tests have been successful");
+		System.out.println((ErrorString != "") ? ErrorString : "All the FunctionalMethods tests have been successful");
 		return (ErrorString != "") ? false : true;
 	}
 	
