@@ -6,7 +6,7 @@ package cw3;
 public class Tests {
 	
 	/**
-	 * The main method.
+	 * The main method. Executing the available tests for each Class developed on this project.
 	 *
 	 * @param args the arguments
 	 */
@@ -85,6 +85,25 @@ public class Tests {
 		
 	}
 	
+	/**
+	 * Tests the Stack and Improved Functionality by:
+	 * - Pushing the values onto the stack and checking if the size and the top value are the expected ones.
+	 * - Verifying if the top() method leaves the stack as it is and if the pop() method remove the top value.
+	 * - Verifying the behaviour of remove in case of null, not-existing(on the stack) value and existing value, by cloning the stack and checking it after the remove happens. 
+	 * - Verifying the behaviour of reverse() by comparing it against the original stack
+	 * A Stack can be passed as myList, however a Boolean must be passed in order to specify if the test will be performed on a ImprovedStack
+	 * 
+	 * 
+	 * @param myList the object whose methods are going to be tested 
+	 * @param firstElement object to load on myList
+	 * @param secondElement object to load on myList
+	 * @param thirdElement object to load on myList
+	 * @param fourthElement object to load on myList
+	 * @param fifthElement object to load on myList
+	 * @param isImproved boolean that specifies whether the myList is an instance of Stack or ImprovedStack
+	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
+	 *         , true if the ErrorString is empty
+	 */
 	private static boolean unitTestStack(Stack myStack,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement, Object fifthElement, boolean isImproved) {
@@ -178,6 +197,20 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
+	/**
+	 * Tests the SampleableList method sample() by comparing the resulting list with the object on the odd indexes from myList. 
+	 * A SampleableList can be passed as myList
+	 * 
+	 * 
+	 * @param myList the object whose methods are going to be tested 
+	 * @param firstElement object to load on myList
+	 * @param secondElement object to load on myList
+	 * @param thirdElement object to load on myList
+	 * @param fourthElement object to load on myList
+	 * @param fifthElement object to load on myList
+	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
+	 *         , true if the ErrorString is empty
+	 */
 	private static boolean unitTestSampleableMethods(SampleableList myList,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement, Object fifthElement) {
@@ -201,6 +234,20 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
+	/**
+	 * Tests the FunctionalList functionality(head(),rest()) by checking if the the resulting object is the same as the expected one (for the head() method)
+	 * The rest() method is checked by comparing the resulting list with myList. 
+	 * A FunctionalList can be passed as myList
+	 * 
+	 * 
+	 * @param myList the object whose methods are going to be tested 
+	 * @param firstElement object to load on myList
+	 * @param secondElement object to load on myList
+	 * @param thirdElement object to load on myList
+	 * @param fourthElement object to load on myList
+	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
+	 *         , true if the ErrorString is empty
+	 */
 	private static boolean unitTestFunctionalMethods(FunctionalList myList,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement) {
@@ -224,6 +271,19 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
+	/**
+	 * Tests the List basic functionality (add(item),add(index,item),remove(index),get(index)) by checking if the objects are loaded where expected 
+	 * Any of ArrayList,LinkedList,FunctionalList and SampleableList can be passed as myList
+	 * 
+	 * 
+	 * @param myList the object whose methods are going to be tested 
+	 * @param firstElement object to load on myList
+	 * @param secondElement object to load on myList
+	 * @param thirdElement object to load on myList
+	 * @param fourthElement object to load on myList
+	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
+	 *         , true if the ErrorString is empty
+	 */
 	private static boolean unitTestMainMethods(List myList,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement) {
@@ -243,6 +303,20 @@ public class Tests {
 		return (ErrorString != "") ? false : true;
 	}
 	
+	
+	/**
+	 * Tests the List functionality by checking the ErrorMessage returned. 
+	 * Any of ArrayList,LinkedList,FunctionalList and SampleableList can be passed as myList
+	 * 
+	 * 
+	 * @param myList the object whose methods are going to be tested 
+	 * @param firstElement object to load on myList
+	 * @param secondElement object to load on myList
+	 * @param thirdElement object to load on myList
+	 * @param fourthElement object to load on myList
+	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
+	 *         , true if the ErrorString is empty
+	 */
 	private static boolean unitTestErrorMessages(List myList, Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement)
@@ -287,7 +361,7 @@ public class Tests {
 	}
 	
 	/**
-	 * 
+	 * The tests that have been performed during the development of the code
 	 */
 	private static void developmentTests() {
 		//List mylist = new ArrayList();
