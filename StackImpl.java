@@ -8,17 +8,26 @@ public class StackImpl extends AbstractStack {
 		//we shouldn't do anything if a Null list is passed when the class is instantiated, 
 		//so a NullPointerException will be thrown in that case
 	}
-
+	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public boolean isEmpty() {
 		return this.internalList.isEmpty(); 
 	}
-
+	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public int size() {
 		return this.internalList.size();
 	}
-
+	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public void push(Object item) {
 		if(item != null) {
@@ -26,7 +35,10 @@ public class StackImpl extends AbstractStack {
 		}
 		//No return type, so if a null is passed as item, the program won't do anything
 	}
-
+	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public ReturnObject top() {
 		if(this.isEmpty()) {
@@ -40,6 +52,9 @@ public class StackImpl extends AbstractStack {
 		}
 	}
 
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public ReturnObject pop() {
 		ReturnObject Popped = top(); //I rather use the top method and do not replicate code.
@@ -49,6 +64,11 @@ public class StackImpl extends AbstractStack {
 		return Popped;
 	}
 	
+	/**
+	 * Returns an exact clone of the Stack
+	 * 
+	 * @return a clone of the Stack 
+	 */
 	public Stack CloneStack() {
 		Stack ClonedStack = new StackImpl(new LinkedList());
 		for(int i = this.size(); i > 0; i--) {

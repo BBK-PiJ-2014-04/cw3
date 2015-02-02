@@ -9,6 +9,7 @@ public class ReturnObjectImpl implements ReturnObject {
 		this.myObject = myObject;
 	}
 
+	
 	@Override
 	public boolean hasError() {
 		if(myObject == null) {
@@ -20,7 +21,10 @@ public class ReturnObjectImpl implements ReturnObject {
 				|| myObject == ErrorMessage.INVALID_ARGUMENT) ? true : false;
 		}
 		
-
+	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public ErrorMessage getError() {
 		if(hasError()) {
@@ -30,7 +34,10 @@ public class ReturnObjectImpl implements ReturnObject {
 			return ErrorMessage.NO_ERROR;
 		}
 	}
-
+	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public Object getReturnValue() {
 		if(hasError()) {
