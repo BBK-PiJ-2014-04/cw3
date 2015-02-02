@@ -284,10 +284,10 @@ public class Tests {
 	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
 	 *         , true if the ErrorString is empty
 	 */
-	private static boolean isEveryElementOnRightIndexOnTheSampleList(SampleableList myList,Object firstElement, 
+	public static boolean isEveryElementOnRightIndexOnTheSampleList(SampleableList myList,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement, Object fifthElement) {
-		String ErrorString = "";
+		String errorString = "";
 		myList.add(firstElement);
 		myList.add(0,secondElement);
 		myList.add(thirdElement);
@@ -296,20 +296,20 @@ public class Tests {
 		SampleableList sampledList = myList.sample();
 		//In this case, I want to try and test the get method of the sampledList against the original added elements
 		if(!test(sampledList.get(0).getReturnValue(),secondElement))
-			ErrorString += "Test SampledMethods 1 Failed\n";
+			errorString += "Test SampledMethods 1 Failed\n";
 		if(!test(sampledList.get(1).getReturnValue(),fifthElement))
-			ErrorString += "Test SampledMethods 2 Failed\n";
+			errorString += "Test SampledMethods 2 Failed\n";
 		if(!test(sampledList.get(2).getReturnValue(),thirdElement))
-			ErrorString += "Test SampledMethods 3 Failed\n";
+			errorString += "Test SampledMethods 3 Failed\n";
 		if(sampledList.size() != 3)
-			ErrorString += "Test SampledMethods 4 Failed\n";
-		System.out.println((ErrorString != "") ? ErrorString : "All the SampledMethods tests have been successful");
-		return (ErrorString != "") ? false : true;
+			errorString += "Test SampledMethods 4 Failed\n";
+		System.out.println((errorString != "") ? errorString : "All the SampledMethods tests have been successful");
+		return (errorString != "") ? false : true;
 	}
 	
 	/**
 	 * Tests the FunctionalList functionality(head(),rest()) by checking if the the resulting object is the same as the expected one (for the head() method)
-	 * The rest() method is checked by comparing the resulting list with myList. 
+	 * The rest() method is checked with the functionalListRestIsExcludingTheHead() method by comparing the resulting list with myList. 
 	 * A FunctionalList can be passed as myList
 	 * 
 	 * 
@@ -321,27 +321,32 @@ public class Tests {
 	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
 	 *         , true if the ErrorString is empty
 	 */
-	private static boolean unitTestFunctionalMethods(FunctionalList myList,Object firstElement, 
+	public static boolean unitTestFunctionalMethods(FunctionalList myList,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement) {
-		String ErrorString = "";
+		String errorString = "";
 		if(!test(myList.head().getError(),ErrorMessage.EMPTY_STRUCTURE)) 
-			ErrorString += "Test FunctionalMethods 1 Failed\n";
+			errorString += "Test FunctionalMethods 1 Failed\n";
 		myList.add(firstElement);
 		myList.add(0,secondElement);
 		myList.add(thirdElement);
 		myList.add(1,fourthElement);
 		if(test(myList.get(1).getReturnValue(),firstElement))
-			ErrorString += "Test FunctionalMethods 2 Failed\n";
+			errorString += "Test FunctionalMethods 2 Failed\n";
 		if(!test(myList.head().getReturnValue(),secondElement))
-			ErrorString += "Test FunctionalMethods 3 Failed\n";
+			errorString += "Test FunctionalMethods 3 Failed\n";
+		functionalListRestIsExcludingTheHead(myList, errorString);
+		System.out.println((errorString != "") ? errorString : "All the FunctionalMethods tests have been successful");
+		return (errorString != "") ? false : true;
+	}
+
+	private static void functionalListRestIsExcludingTheHead(
+		FunctionalList myList, String errorString) {
 		FunctionalList restList = myList.rest();
 		for(int i = 0; i < restList.size(); i++) {
 			if(!test(restList.get(i).getReturnValue(),myList.get(i+1).getReturnValue()))
-				ErrorString += "Test FunctionalMethods " + i+4 + " Failed\n";
+				errorString += "Test FunctionalMethods " + i+4 + " Failed\n";
 		}
-		System.out.println((ErrorString != "") ? ErrorString : "All the FunctionalMethods tests have been successful");
-		return (ErrorString != "") ? false : true;
 	}
 	
 	/**
@@ -360,20 +365,20 @@ public class Tests {
 	public static boolean isEveryElementOnRightIndexOnTheList(List myList,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement) {
-		String ErrorString = "";
+		String errorString = "";
 		myList.add(firstElement);
 		myList.add(secondElement);
 		myList.add(thirdElement);
 		myList.remove(1);
 		myList.add(1,fourthElement);
 		if(!test(myList.get(0).getReturnValue(),firstElement))
-			ErrorString = "Test MainMethods 1 Failed\n";
+			errorString = "Test MainMethods 1 Failed\n";
 		if(!test(myList.get(1).getReturnValue(),fourthElement))
-			ErrorString = "Test MainMethods 2 Failed\n";
+			errorString = "Test MainMethods 2 Failed\n";
 		if(!test(myList.get(2).getReturnValue(),thirdElement))
-			ErrorString = "Test MainMethods 3 Failed\n";
-		System.out.println((ErrorString != "") ? ErrorString : "All the MainMethods tests have been successful");
-		return (ErrorString != "") ? false : true;
+			errorString = "Test MainMethods 3 Failed\n";
+		System.out.println((errorString != "") ? errorString : "All the MainMethods tests have been successful");
+		return (errorString != "") ? false : true;
 	}
 	
 	
@@ -394,43 +399,43 @@ public class Tests {
 			Object secondElement, Object thirdElement, 
 			Object fourthElement)
 	{
-		String ErrorString = "";
+		String errorString = "";
 		if(myList.size()!=0) 
-			ErrorString += "Test ErrorMessage 1 failed\n";
+			errorString += "Test ErrorMessage 1 failed\n";
 		if(!myList.isEmpty()) 
-			ErrorString += "Test ErrorMessage 2 failed\n";
+			errorString += "Test ErrorMessage 2 failed\n";
 		if(!test(myList.add(0, firstElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS)) 
-			ErrorString += "Test ErrorMessage 3 failed\n";
+			errorString += "Test ErrorMessage 3 failed\n";
 		if(!test(myList.add(-2, firstElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
-			ErrorString += "Test ErrorMessage 4 failed\n";
+			errorString += "Test ErrorMessage 4 failed\n";
 		if(!test(myList.add(firstElement).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test ErrorMessage 5 failed\n";
+			errorString += "Test ErrorMessage 5 failed\n";
 		if(!test(myList.add(2, secondElement).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
-			ErrorString += "Test ErrorMessage 6 failed\n";
+			errorString += "Test ErrorMessage 6 failed\n";
 		if(test(myList.add(2, secondElement).getError(),ErrorMessage.INVALID_ARGUMENT))
-			ErrorString += "Test ErrorMessage 7 failed\n";
+			errorString += "Test ErrorMessage 7 failed\n";
 		if(myList.size() != 1) 
-			ErrorString += "Test ErrorMessage 8 failed\n";
+			errorString += "Test ErrorMessage 8 failed\n";
 		if(!test(myList.add(thirdElement).getError(),ErrorMessage.NO_ERROR)) //this should tests the resize (for when the initial length of the array (on ArrayList) was set to 2)
-			ErrorString += "Test ErrorMessage 9 failed\n";
+			errorString += "Test ErrorMessage 9 failed\n";
 		if(!test(myList.add(fourthElement).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test ErrorMessage 10 failed\n";
+			errorString += "Test ErrorMessage 10 failed\n";
 		if(!test(myList.add(0,fourthElement).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test ErrorMessage 11 failed\n";
+			errorString += "Test ErrorMessage 11 failed\n";
 		if(!test(myList.remove(0).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test ErrorMessage 12 failed\n";
+			errorString += "Test ErrorMessage 12 failed\n";
 		if(!test(myList.remove(3).getError(),ErrorMessage.INDEX_OUT_OF_BOUNDS))
-			ErrorString += "Test ErrorMessage 13 failed\n";
+			errorString += "Test ErrorMessage 13 failed\n";
 		if(!test(myList.remove(1).getError(),ErrorMessage.NO_ERROR))
-			ErrorString += "Test ErrorMessage 14 failed\n";
+			errorString += "Test ErrorMessage 14 failed\n";
 		if(!test(myList.add(null).getError(),ErrorMessage.INVALID_ARGUMENT))
-			ErrorString += "Test ErrorMessage 15 failed\n";
+			errorString += "Test ErrorMessage 15 failed\n";
 		if(myList.size()==0) 
-			ErrorString += "Test ErrorMessage 16 failed\n";
+			errorString += "Test ErrorMessage 16 failed\n";
 		if(myList.isEmpty()) 
-			ErrorString += "Test ErrorMessage 17 failed\n";
-		System.out.println((ErrorString != "") ? ErrorString : "All the ErrorMessage tests have been successful");
-		return (ErrorString != "") ? false : true;
+			errorString += "Test ErrorMessage 17 failed\n";
+		System.out.println((errorString != "") ? errorString : "All the ErrorMessage tests have been successful");
+		return (errorString != "") ? false : true;
 	}
 	
 	/**
