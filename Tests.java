@@ -1,7 +1,9 @@
 package cw3;
 
 /**
- * The Class Tests.
+ * The Test Class. Since we couldn't use external library, I've implemented my own unit test framework
+ * 
+ * @author SalvatoreCardali
  */
 public class Tests {
 	

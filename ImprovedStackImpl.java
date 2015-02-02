@@ -1,23 +1,46 @@
 package cw3;
 
+
+/**
+ * 
+ * Improved version of a stack, using an underlying LinkedList instantiated when the Constructor is called
+ * Added the possibility of removing an element from the Stack and reversing the Stack itself
+ *
+ * 
+ * @author SalvatoreCardali
+ *
+ */
 public class ImprovedStackImpl implements ImprovedStack {
 	
 	private List myStack;
 	
+	/**
+	 * Constructor
+	 * 
+	 */
 	public ImprovedStackImpl() {
 		this.myStack = new LinkedList();
 	}
 	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public boolean isEmpty() {
 		return this.myStack.isEmpty();
 	}
 
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public int size() {
 		return this.myStack.size();
 	}
 
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public void push(Object item) {
 		if(item != null) {
@@ -25,6 +48,9 @@ public class ImprovedStackImpl implements ImprovedStack {
 		} //No return type, so if a null is passed as item, the program won't do anything
 	}
 
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public ReturnObject top() {
 		if(this.isEmpty()) {
@@ -35,7 +61,10 @@ public class ImprovedStackImpl implements ImprovedStack {
 			return new ReturnObjectImpl(this.myStack.get(size()-1).getReturnValue());
 		}
 	}
-
+	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public ReturnObject pop() {
 		ReturnObject Popped = top(); //I rather use the top method and do not replicate code.
@@ -44,7 +73,10 @@ public class ImprovedStackImpl implements ImprovedStack {
 		}
 		return Popped;
 	}
-
+	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public ImprovedStack reverse() {
 		ImprovedStack ReversedStack = new ImprovedStackImpl();
@@ -54,7 +86,10 @@ public class ImprovedStackImpl implements ImprovedStack {
 		}
 		return ReversedStack;
 	}
-
+	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public void remove(Object object) {
 		if(object != null) {
@@ -70,6 +105,11 @@ public class ImprovedStackImpl implements ImprovedStack {
 		}
 	}
 	
+	/**
+	 * Returns an exact clone of the Stack
+	 * 
+	 * @return a clone of the Stack 
+	 */
 	public Stack CloneStack() {
 		Stack ClonedStack = new ImprovedStackImpl();
 		for(int i = this.size(); i > 0; i--) {

@@ -1,5 +1,12 @@
 package cw3;
 
+/**
+ * FunctionalLinkedList extends the LinkedList class, so it's using that as underlying structure {@see LinkedList}
+ * 
+ * @author SalvatoreCardali
+ *
+ */
+
 public class FunctionalLinkedList extends LinkedList implements FunctionalList {
 	
 	/**

@@ -1,5 +1,13 @@
 package cw3;
 
+/**
+ * SampleableList has an extra-method (sample) to the List {@see List} interface.
+ * It extends the LinkedList. 
+ * 
+ * @author SalvatoreCardali
+ *
+ */
+
 public class SampleableListImpl extends LinkedList implements SampleableList {
 	//no point of rewriting all the methods, better to extend the class LinkedList
 	

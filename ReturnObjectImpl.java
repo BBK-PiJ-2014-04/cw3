@@ -1,5 +1,11 @@
 package cw3;
-
+/**
+ * A wrapper containing either an object (the result of an operation
+ * on a data structure) or an error value.
+ * 
+ * @author SalvatoreCardali
+ *
+ */
 public class ReturnObjectImpl implements ReturnObject {
 
 	public Object myObject;
@@ -9,7 +15,9 @@ public class ReturnObjectImpl implements ReturnObject {
 		this.myObject = myObject;
 	}
 
-	
+	/**
+	 * see @inheritDoc
+	 */
 	@Override
 	public boolean hasError() {
 		if(myObject == null) {

@@ -1,7 +1,20 @@
 package cw3;
 
+/**
+ * 
+ * Implementation of a stack that is using a List(ArrayList or LinkedList) as underlying structure.
+ * A push of a Null value would not generate any output or action.
+ * 
+ * @author SalvatoreCardali
+ *
+ */
 public class StackImpl extends AbstractStack {
-
+	
+	/**
+	 * Constructor
+	 * 
+	 * @param list
+	 */
 	public StackImpl(List list) {
 		super(list);
 		//As suggested by the lecturer, 

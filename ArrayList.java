@@ -1,17 +1,10 @@
 package cw3;
 
 /**
- * A list is a collection of objects that are sorted and can be
- * accessed by index. The first element in the list is at index 0.
- *
- * A list can store objects of any kind, and they can be of different
- * types: Integers, Doubles, String, or even other lists. However,
- * this list cannot store null objects.
  * 
- * There is no limit to the number of elements in the list (provided
- * that there is free memory in the Java Virtual Machine).
- * 
- * This list is implemented using an array as actual object to store the data.
+ * ArrayList is a List implementation using an array as underlying structure.
+ * The Array is instantiated when the Constructor is called with a fixed length
+ * The array is expanded every time the method size() reaches the Array length - 1 
  * 
  * @author SalvatoreCardali
  *
@@ -30,9 +23,7 @@ public class ArrayList implements List {
 
 	
 	/**
-	 * Returns true if the list is empty, false otherwise. 
-	 * 
-	 * @return true if the list is empty, false otherwise. 
+	 * see @inheritDoc
 	 */
 	@Override
 	public boolean isEmpty() {
@@ -40,9 +31,7 @@ public class ArrayList implements List {
 	}
 
 	/**
-	 * Returns the number of items currently in the list.
-	 * 
-	 * @return the number of items currently in the list
+	 * see @inheritDoc
 	 */
 	@Override
 	public int size() {
@@ -56,14 +45,7 @@ public class ArrayList implements List {
 	}
 	
 	/**
-	 * Returns the elements at the given position. 
-	 * 
-	 * If the index is negative or greater or equal than the size of
-	 * the list, then an appropriate error must be returned.
-	 * 
-	 * @param index the position in the list of the item to be retrieved
-	 * @return the element or an appropriate error message, 
-	 *         encapsulated in a ReturnObject
+	 * see @inheritDoc
 	 */
 	@Override
 	public ReturnObject get(int index) {
@@ -76,16 +58,7 @@ public class ArrayList implements List {
 	}
 	
 	/**
-	 * Returns the elements at the given position and removes it
-	 * from the list. The indexes of elements after the removed
-	 * element must be updated accordingly.
-	 * 
-	 * If the index is negative or greater or equal than the size of
-	 * the list, then an appropriate error must be returned.
-	 * 
-	 * @param index the position in the list of the item to be retrieved
-	 * @return the element or an appropriate error message, 
-	 *         encapsulated in a ReturnObject
+	 * see @inheritDoc
 	 */
 	@Override
 	public ReturnObject remove(int index) {
@@ -111,22 +84,7 @@ public class ArrayList implements List {
 	}
 
 	/**
-	 * Adds an element to the list, inserting it at the given
-	 * position. The indexes of elements at and after that position
-	 * must be updated accordingly.
-	 * 
-	 * If the index is negative or greater or equal than the size of
-	 * the list, then an appropriate error must be returned.
-	 * 
-	 * If a null object is provided to insert in the list, the
-	 * request must be ignored and an appropriate error must be
-	 * returned.
-	 * 
-	 * @param index the position at which the item should be inserted in
-	 *              the list
-	 * @param item the value to insert into the list
-	 * @return an ReturnObject, empty if the operation is successful
-	 *         the item added or containing an appropriate error message
+	 * see @inheritDoc
 	 */
 	@Override
 	public ReturnObject add(int index, Object item) {
@@ -147,16 +105,9 @@ public class ArrayList implements List {
 			return new ReturnObjectImpl(null);
 		}
 	}
+	
 	/**
-	 * Adds an element at the end of the list.
-	 * 
-	 * If a null object is provided to insert in the list, the
-	 * request must be ignored and an appropriate error must be
-	 * returned.
-	 * 
-	 * @param item the value to insert into the list
-	 * @return an ReturnObject, empty if the operation is successful
-	 *         the item added or containing an appropriate error message
+	 * see @inheritDoc
 	 */
 	@Override
 	public ReturnObject add(Object item) {
