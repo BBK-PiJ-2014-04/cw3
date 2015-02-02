@@ -32,17 +32,17 @@ public class Tests {
 		
 		//ArrayList Test
 		System.out.println("ArrayList Tests:");
-		if(!unitTestErrorMessages(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+		if(!isEveryErrorMessageAppropriate(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
-		if(!unitTestMainMethods(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+		if(!isEveryElementOnRightIndexOnTheList(new ArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		System.out.println("ArrayList Tests - End\n");
 		
 		//FunctionalArrayList Test
 		System.out.println("FunctionalArrayList Tests:");
-		if(!unitTestErrorMessages(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+		if(!isEveryErrorMessageAppropriate(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
-		if(!unitTestMainMethods(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
+		if(!isEveryElementOnRightIndexOnTheList(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestFunctionalMethods(new FunctionalArrayList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
@@ -50,9 +50,9 @@ public class Tests {
 		
 		//FunctionalLinkedList Test
 		System.out.println("FunctionalLinkedList Tests:");
-		if(!unitTestErrorMessages(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
+		if(!isEveryErrorMessageAppropriate(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
-		if(!unitTestMainMethods(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
+		if(!isEveryElementOnRightIndexOnTheList(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
 		if(!unitTestFunctionalMethods(new FunctionalLinkedList(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
@@ -60,11 +60,11 @@ public class Tests {
 		
 		//SampleableList Test
 		System.out.println("SampleableListImpl Tests:");
-		if(!unitTestErrorMessages(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
+		if(!isEveryErrorMessageAppropriate(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
-		if(!unitTestMainMethods(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
+		if(!isEveryElementOnRightIndexOnTheList(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement))
 			return;
-		if(!unitTestSampleableMethods(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement))
+		if(!isEveryElementOnRightIndexOnTheSampleList(new SampleableListImpl(),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement))
 			return;
 		System.out.println("SampleableListImpl Tests - End\n");
 		
@@ -80,17 +80,17 @@ public class Tests {
 		System.out.println("Stack(both Improved and not) with ArrayList Tests:");
 		if(!unitTestStack(new StackImpl(new ArrayList()),FirstElement,SecondElement,thirdElement,FourthElement,FifthElement,false))
 			return;
-		System.out.println("Stack Tests - End\n");
-		
-		
+		System.out.println("Stack Tests - End\n");		
 	}
 	
 	/**
-	 * Tests the Stack and Improved Functionality by:
-	 * - Pushing the values onto the stack and checking if the size and the top value are the expected ones.
-	 * - Verifying if the top() method leaves the stack as it is and if the pop() method remove the top value.
-	 * - Verifying the behaviour of remove in case of null, not-existing(on the stack) value and existing value, by cloning the stack and checking it after the remove happens. 
-	 * - Verifying the behaviour of reverse() by comparing it against the original stack
+	 * Tests the Stack and Improved Stack Functionality using:
+	 * - reverseStackTest
+	 * - removingElementOnTheStack
+	 * - removingNonExistingValueFromTheStack 
+	 * - removingNullFromTheStack
+	 * - topAndPopAffectingSize
+	 * - emptyStackTest
 	 * A Stack can be passed as myList, however a Boolean must be passed in order to specify if the test will be performed on a ImprovedStack
 	 * 
 	 * 
@@ -104,97 +104,170 @@ public class Tests {
 	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
 	 *         , true if the ErrorString is empty
 	 */
-	private static boolean unitTestStack(Stack myStack,Object firstElement, 
+	public static boolean unitTestStack(Stack myStack,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement, Object fifthElement, boolean isImproved) {
-		String ErrorString = "";
-		int myPreviousSize = 0;
-		ReturnObject MyPreviousTop = null;
-		ReturnObject MyNewTop = null;
-		if(myStack.size()!=0) 
-			ErrorString += "Test Stack 1 failed\n";
-		if(!myStack.isEmpty()) 
-			ErrorString += "Test Stack 2 failed\n";
-		if(!test(myStack.top().getError(),ErrorMessage.EMPTY_STRUCTURE)) 
-			ErrorString += "Test Stack 3 failed\n";
+		String errorString = "";
+		emptyStackTest(myStack,errorString);
 		myStack.push(firstElement);
 		myStack.push(secondElement);
 		myStack.push(thirdElement);
 		myStack.push(fourthElement);
 		myStack.push(fifthElement);
-		if(myStack.size()!=5) 
-			ErrorString += "Test Stack 4 failed\n";
-		myPreviousSize = myStack.size();
-		MyPreviousTop = myStack.top();
-		if(myStack.size() != myPreviousSize)
-			ErrorString += "Test Stack 5 failed\n";
-		MyNewTop = myStack.pop();
-		if(!test(MyNewTop.getReturnValue(),MyPreviousTop.getReturnValue()))
-			ErrorString += "Test Stack 6 failed\n";
-		if(myStack.size() == myPreviousSize)
-			ErrorString += "Test Stack 7 failed\n";
-		if(test(MyNewTop.getReturnValue(),myStack.pop()))
-			ErrorString += "Test Stack 8 failed\n";
-		if(myStack.size() != 3)
-			ErrorString += "Test Stack 9 failed\n";
-		if(myStack.isEmpty())
-			ErrorString += "Test Stack 10 failed\n";
+		ReturnObject myPreviousTop;
+		int myPreviousSize = myStack.size();
+		myPreviousTop = myStack.top();
+		topAndPopAffectingSize(myStack, errorString, myPreviousTop, myPreviousSize);
 		if(isImproved) {
 			boolean isStillSame = true;
-			ImprovedStackImpl NewStack = (ImprovedStackImpl)myStack;
-			//This will create copies of the original stack on which I'm going to run my tests. Also, I will reset this condition after every test.
-			ImprovedStack OriginalStack = (ImprovedStackImpl) NewStack.CloneStack();
-			Stack CopiedStack = (ImprovedStackImpl)NewStack.CloneStack();
+			ImprovedStackImpl newStack = (ImprovedStackImpl)myStack;
 			ImprovedStack myReversedStack = new ImprovedStackImpl();
-			OriginalStack.remove(null);
-			if(myStack.size() != 3)
-				ErrorString += "Test Stack 11 (ImprovedStack) failed\n";
-			for(int i = 0; i < CopiedStack.size(); i++) {
-				if(!test(CopiedStack.pop().getReturnValue(),OriginalStack.pop().getReturnValue()))
-					isStillSame = false;
-			}
-			if(!isStillSame)
-				ErrorString += "Test Stack 12 (ImprovedStack) failed\n";
-			isStillSame = true;
-			OriginalStack = (ImprovedStackImpl) NewStack.CloneStack();
-			CopiedStack = (ImprovedStackImpl)NewStack.CloneStack();
-			OriginalStack.remove("TESTTESTTEST"); //I won't put this value in the test :)
-			if(myStack.size() != 3)
-				ErrorString += "Test Stack 13 (ImprovedStack) failed\n";
-			for(int i = 0; i < CopiedStack.size(); i++) {
-				if(!test(CopiedStack.pop().getReturnValue(),OriginalStack.pop().getReturnValue()))
-					isStillSame = false;
-			}
-			if(!isStillSame)
-				ErrorString += "Test Stack 14 (ImprovedStack) failed\n";
+			removingNullFromTheStack(myStack, errorString,
+					isStillSame, newStack);
+			removingNonExistingValueFromTheStack(myStack,
+					errorString, isStillSame, newStack);
 			//now, an object that is actually on the stack
-			isStillSame = true;
-			OriginalStack = (ImprovedStackImpl) NewStack.CloneStack();
-			CopiedStack = (ImprovedStackImpl)NewStack.CloneStack();
-			OriginalStack.remove(firstElement); //I won't put this value in the test :)
-			if(OriginalStack.size() != 2)
-				ErrorString += "Test Stack 15 (ImprovedStack) failed\n";
-			for(int i = 0; i < CopiedStack.size(); i++) {
-				if(!test(CopiedStack.pop().getReturnValue(),OriginalStack.pop().getReturnValue()))
-					if(i == 0) 
-						isStillSame = false;
-			}
-			if(isStillSame)
-				ErrorString += "Test Stack 16 (ImprovedStack) failed\n";
-			OriginalStack = (ImprovedStackImpl) NewStack.CloneStack();
-			CopiedStack = (ImprovedStackImpl)NewStack.CloneStack();
-			Object[] ArrayOriginalStack = new Object[OriginalStack.size()];
-			for(int i = OriginalStack.size()-1; i >= 0; i--){
-				ArrayOriginalStack[i] = OriginalStack.pop();
-			}
-			for(int i = 0; i < myReversedStack.size(); i++){
-				if(!test(ArrayOriginalStack[i],myReversedStack.pop().getReturnValue()))
-					ErrorString += "Test Stack 18 (ImprovedStack) failed\n";
-			}
-			//I need to test what happens if I pop an empty structure, as I've got a strange Exception before
+			removingElementOnTheStack(firstElement, errorString,
+					isStillSame, newStack);
+			reverseStackTest(errorString, newStack,
+					myReversedStack);
 		}
-		System.out.println((ErrorString != "") ? ErrorString : "All the " + ((isImproved) ? "ImprovedStack" : "Stack") + " tests have been successful");
-		return (ErrorString != "") ? false : true;
+		System.out.println((errorString != "") ? errorString : "All the " + ((isImproved) ? "ImprovedStack" : "Stack") + " tests have been successful");
+		return (errorString != "") ? false : true;
+	}
+
+	/**
+	 * Testing whether the reversed Stack is really the bottom-up original Stack by using an Array as support structure
+	 * 
+	 * @param errorString
+	 * @param newStack
+	 * @param myReversedStack
+	 */
+	private static void reverseStackTest(String errorString,
+		ImprovedStackImpl newStack, ImprovedStack myReversedStack) {
+		ImprovedStack originalStack;
+		originalStack = (ImprovedStackImpl) newStack.CloneStack();
+		Object[] ArrayOriginalStack = new Object[originalStack.size()];
+		for(int i = originalStack.size()-1; i >= 0; i--){
+			ArrayOriginalStack[i] = originalStack.pop();
+		}
+		for(int i = 0; i < myReversedStack.size(); i++){
+			if(!test(ArrayOriginalStack[i],myReversedStack.pop().getReturnValue()))
+				errorString += "Test Stack 18 (ImprovedStack) failed\n";
+		}		
+	}
+
+	/**
+	 * Testing whether the Element is really removed from the stack by comparing the obtained stack with the original one
+	 * 
+	 * @param firstElement
+	 * @param errorString
+	 * @param isStillSame
+	 * @param newStack
+	 */
+	private static void removingElementOnTheStack(Object firstElement,
+			String errorString, boolean isStillSame, ImprovedStackImpl newStack) {
+		ImprovedStack originalStack;
+		Stack copiedStack;
+		originalStack = (ImprovedStackImpl) newStack.CloneStack();
+		copiedStack = (ImprovedStackImpl)newStack.CloneStack();
+		originalStack.remove(firstElement); //I won't put this value in the test :)
+		if(originalStack.size() != 2)
+			errorString += "Test Stack 15 (ImprovedStack) failed\n";
+		for(int i = 0; i < copiedStack.size(); i++) {
+			if(!test(copiedStack.pop().getReturnValue(),originalStack.pop().getReturnValue()))
+				if(i == 0) 
+					isStillSame = false;
+		}
+		if(isStillSame)
+			errorString += "Test Stack 16 (ImprovedStack) failed\n";
+	}
+
+	/**
+	 * Testing whether the Stack remains unaltered when an attempt to remove an object which is not on the stack is made
+	 * 
+	 * @param myStack
+	 * @param errorString
+	 * @param isStillSame
+	 * @param newStack
+	 */
+	private static void removingNonExistingValueFromTheStack(Stack myStack,
+			String errorString, boolean isStillSame, ImprovedStackImpl newStack) {
+		ImprovedStack originalStack;
+		Stack copiedStack;
+		originalStack = (ImprovedStackImpl) newStack.CloneStack();
+		copiedStack = (ImprovedStackImpl)newStack.CloneStack();
+		originalStack.remove("TESTTESTTEST"); //I won't put this value in the test :)
+		if(myStack.size() != 3)
+			errorString += "Test Stack 13 (ImprovedStack) failed\n";
+		for(int i = 0; i < copiedStack.size(); i++) {
+			if(!test(copiedStack.pop().getReturnValue(),originalStack.pop().getReturnValue()))
+				isStillSame = false;
+		}
+		if(!isStillSame)
+			errorString += "Test Stack 14 (ImprovedStack) failed\n";
+	}
+
+	/**
+	 * Testing whether the Stack remains unaltered when an attempt to remove a NULL is made
+	 * 
+	 * @param myStack
+	 * @param errorString
+	 * @param isStillSame
+	 * @param newStack
+	 */
+	private static void removingNullFromTheStack(Stack myStack,
+			String errorString, boolean isStillSame, ImprovedStackImpl newStack) {
+		ImprovedStack originalStack;
+		Stack copiedStack;
+		originalStack = (ImprovedStackImpl) newStack.CloneStack();
+		copiedStack = (ImprovedStackImpl)newStack.CloneStack();
+		originalStack.remove(null);
+		if(myStack.size() != 3)
+			errorString += "Test Stack 11 (ImprovedStack) failed\n";
+		for(int i = 0; i < copiedStack.size(); i++) {
+			if(!test(copiedStack.pop().getReturnValue(),originalStack.pop().getReturnValue()))
+				isStillSame = false;
+		}
+		if(!isStillSame)
+			errorString += "Test Stack 12 (ImprovedStack) failed\n";
+	}
+	
+	/**
+	 * Testing whether giving the previous top of the Stack and the previous size, top() leaves the Stack as it is and pop() removes the top
+	 * 
+	 * @param myStack
+	 * @param errorString
+	 * @param myPreviousTop
+	 * @param myPreviousSize
+	 */
+	private static void topAndPopAffectingSize(Stack myStack,
+			String errorString,ReturnObject myPreviousTop,int myPreviousSize) {
+		ReturnObject myNewTop;
+		if(myStack.size() != myPreviousSize)
+			errorString += "Test Stack 5 failed\n";
+		myNewTop = myStack.pop();
+		if(!test(myNewTop.getReturnValue(),myPreviousTop.getReturnValue()))
+			errorString += "Test Stack 6 failed\n";
+		if(myStack.size() == myPreviousSize)
+			errorString += "Test Stack 7 failed\n";
+		if(test(myNewTop.getReturnValue(),myStack.pop()))
+			errorString += "Test Stack 8 failed\n";
+	}
+
+	/**
+	 * Testing whether the Stack is empty right after it's initialisation
+	 * 
+	 * @param myStack
+	 * @param errorString
+	 */
+	private static void emptyStackTest(Stack myStack,String errorString) {
+		if(myStack.size()!=0) 
+			errorString += "Test Stack 1 failed\n";
+		if(!myStack.isEmpty()) 
+			errorString += "Test Stack 2 failed\n";
+		if(!test(myStack.top().getError(),ErrorMessage.EMPTY_STRUCTURE)) 
+			errorString += "Test Stack 3 failed\n";
 	}
 	
 	/**
@@ -211,7 +284,7 @@ public class Tests {
 	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
 	 *         , true if the ErrorString is empty
 	 */
-	private static boolean unitTestSampleableMethods(SampleableList myList,Object firstElement, 
+	private static boolean isEveryElementOnRightIndexOnTheSampleList(SampleableList myList,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement, Object fifthElement) {
 		String ErrorString = "";
@@ -284,7 +357,7 @@ public class Tests {
 	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
 	 *         , true if the ErrorString is empty
 	 */
-	private static boolean unitTestMainMethods(List myList,Object firstElement, 
+	public static boolean isEveryElementOnRightIndexOnTheList(List myList,Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement) {
 		String ErrorString = "";
@@ -317,7 +390,7 @@ public class Tests {
 	 * @return a boolean, false if the ErrorString has been filled out with something(some tests have failed)
 	 *         , true if the ErrorString is empty
 	 */
-	private static boolean unitTestErrorMessages(List myList, Object firstElement, 
+	public static boolean isEveryErrorMessageAppropriate(List myList, Object firstElement, 
 			Object secondElement, Object thirdElement, 
 			Object fourthElement)
 	{
